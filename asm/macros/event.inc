@@ -2654,3 +2654,11 @@
 	callnative ScriptChangeFollowerNPCBattlePartner
 	.2byte \battlePartner
 	.endm
+
+	@ Sets a variable object event to an overworld mon for a wild encounter.
+	.macro setobjectaswildencounter localId:req, encounterType=ENCOUNTER_FIXED
+	.byte SCR_OP_SETOBJECTASWILDENCOUNTER
+	.2byte \localId
+	.byte \encounterType
+	release
+	.endm
