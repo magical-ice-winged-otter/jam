@@ -49,6 +49,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/siirtc.h"
 
 // Menu actions
 enum
@@ -83,6 +84,7 @@ enum
 COMMON_DATA bool8 (*gMenuCallback)(void) = NULL;
 
 // EWRAM
+EWRAM_DATA static u8 sStartClockWindowId = 0;
 EWRAM_DATA static u8 sSafariBallsWindowId = 0;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
@@ -144,10 +146,22 @@ static void Task_SaveAfterLinkBattle(u8 taskId);
 static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
 
-static const struct WindowTemplate sWindowTemplate_SafariBalls = {
+#define TILEMAP_TOP_DEFAULT 5
+
+static const struct WindowTemplate sWindowTemplate_StartClock = {
     .bg = 0,
     .tilemapLeft = 1,
     .tilemapTop = 1,
+    .width = 13, // If you want to shorten the dates to Sat., Sun., etc., change this to 9
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x30
+};
+
+static const struct WindowTemplate sWindowTemplate_SafariBalls = {
+    .bg = 0,
+    .tilemapLeft = 1,
+    .tilemapTop = TILEMAP_TOP_DEFAULT,
     .width = 9,
     .height = 4,
     .paletteNum = 15,
@@ -169,7 +183,7 @@ static const u8 *const sPyramidFloorNames[FRONTIER_STAGES_PER_CHALLENGE + 1] =
 static const struct WindowTemplate sWindowTemplate_PyramidFloor = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = TILEMAP_TOP_DEFAULT,
     .width = 10,
     .height = 4,
     .paletteNum = 15,
@@ -179,7 +193,7 @@ static const struct WindowTemplate sWindowTemplate_PyramidFloor = {
 static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = TILEMAP_TOP_DEFAULT,
     .width = 12,
     .height = 4,
     .paletteNum = 15,
@@ -255,6 +269,7 @@ static void BuildUnionRoomStartMenu(void);
 static void BuildBattlePikeStartMenu(void);
 static void BuildBattlePyramidStartMenu(void);
 static void BuildMultiPartnerRoomStartMenu(void);
+static void ShowTimeWindow(void);
 static void ShowSafariBallsWindow(void);
 static void ShowPyramidFloorWindow(void);
 static void RemoveExtraStartMenuWindows(void);
@@ -434,6 +449,56 @@ static void BuildMultiPartnerRoomStartMenu(void)
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
+static const u8 *const gDayNameStringsTable[WEEKDAY_COUNT] = {
+    COMPOUND_STRING("Sunday"),
+    COMPOUND_STRING("Monday"),
+    COMPOUND_STRING("Tuesday"),
+    COMPOUND_STRING("Wednesday"),
+    COMPOUND_STRING("Thursday"),
+    COMPOUND_STRING("Friday"),
+    COMPOUND_STRING("Saturday"),
+};
+
+#define CLOCK_WINDOW_WIDTH 104
+
+static void ShowTimeWindow(void)
+{
+    const u8 *suffix;
+    u8* ptr;
+    u8 convertedHours;
+
+    // print window
+    sStartClockWindowId = AddWindow(&sWindowTemplate_StartClock);
+    PutWindowTilemap(sStartClockWindowId);
+    DrawStdWindowFrame(sStartClockWindowId, FALSE);
+
+    if (gLocalTime.hours < 12)
+    {
+        convertedHours = (gLocalTime.hours == 0) ? 12 : gLocalTime.hours;
+        suffix = gText_AM;
+    }
+    else
+    {
+        convertedHours = (gLocalTime.hours == 12) ? 12 : gLocalTime.hours - 12;
+        suffix = gText_PM;
+    }
+
+    StringExpandPlaceholders(gStringVar4, gDayNameStringsTable[(gLocalTime.days % WEEKDAY_COUNT)]);
+    // StringExpandPlaceholders(gStringVar4, gText_ContinueMenuTime); // prints "time" word, from version before weekday was added and leaving it here in case anyone would prefer to use it
+    AddTextPrinterParameterized(sStartClockWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL); 
+
+    ptr = ConvertIntToDecimalStringN(gStringVar4, convertedHours, STR_CONV_MODE_LEFT_ALIGN, 3);
+    *ptr = 0xF0;
+
+    ConvertIntToDecimalStringN(ptr + 1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    AddTextPrinterParameterized(sStartClockWindowId, 1, gStringVar4, GetStringRightAlignXOffset(1, suffix, CLOCK_WINDOW_WIDTH) - (CLOCK_WINDOW_WIDTH - GetStringRightAlignXOffset(1, gStringVar4, CLOCK_WINDOW_WIDTH) + 3), 1, 0xFF, NULL); // print time
+
+    AddTextPrinterParameterized(sStartClockWindowId, 1, suffix, GetStringRightAlignXOffset(1, suffix, CLOCK_WINDOW_WIDTH), 1, 0xFF, NULL); // print am/pm
+
+    CopyWindowToVram(sStartClockWindowId, COPYWIN_GFX);
+}
+
+
 static void ShowSafariBallsWindow(void)
 {
     sSafariBallsWindowId = AddWindow(&sWindowTemplate_SafariBalls);
@@ -465,7 +530,6 @@ static void RemoveExtraStartMenuWindows(void)
     if (GetSafariZoneFlag())
     {
         ClearStdWindowAndFrameToTransparent(sSafariBallsWindowId, FALSE);
-        CopyWindowToVram(sSafariBallsWindowId, COPYWIN_GFX);
         RemoveWindow(sSafariBallsWindowId);
     }
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
@@ -473,6 +537,8 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
+    ClearStdWindowAndFrameToTransparent(sStartClockWindowId, FALSE);
+    RemoveWindow(sStartClockWindowId);
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -530,6 +596,7 @@ static bool32 InitStartMenuStep(void)
             ShowSafariBallsWindow();
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             ShowPyramidFloorWindow();
+        ShowTimeWindow();
         sInitStartMenuData[0]++;
         break;
     case 4:
