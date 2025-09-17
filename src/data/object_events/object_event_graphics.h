@@ -1,3 +1,16 @@
+// island-game
+const u32 gObjectEventPic_JamieNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/jamie/walking.4bpp", "graphics/object_events/pics/people/jamie/running.4bpp");
+const u32 gObjectEventPic_JamieSurfing[] = INCBIN_U32("graphics/object_events/pics/people/jamie/surfing.4bpp");
+const u32 gObjectEventPic_JamieFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/jamie/field_move.4bpp");
+const u32 gObjectEventPic_JamieUnderwater[] = INCBIN_U32("graphics/object_events/pics/people/jamie/underwater.4bpp");
+
+const u16 gObjectEventPal_JamieNormal[] = INCBIN_U16("graphics/object_events/palettes/jamie_normal.gbapal");
+const u16 gObjectEventPal_JamieSurfing[] = INCBIN_U16("graphics/object_events/palettes/jamie_surfing.gbapal");
+const u16 gObjectEventPal_JamieFieldMove[] = INCBIN_U16("graphics/object_events/palettes/jamie_field_move.gbapal");
+
+
+
+
 const u32 gObjectEventPic_BrendanNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/brendan/walking.4bpp", "graphics/object_events/pics/people/brendan/running.4bpp");
 const u16 gObjectEventPal_Brendan[] = INCBIN_U16("graphics/object_events/palettes/brendan.gbapal");
 const u32 gObjectEventPic_RubySapphireBrendanNormal[] = INCBIN_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/walking.4bpp");

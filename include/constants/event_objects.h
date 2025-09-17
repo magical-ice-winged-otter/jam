@@ -250,8 +250,19 @@
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        242
+#define NUM_REGULAR_OBJ_EVENT_GFX                242
 
+#define ISLAND_START                             (NUM_REGULAR_OBJ_EVENT_GFX)
+#define OBJ_EVENT_GFX_JAMIE_NORMAL               (ISLAND_START + 1)
+#define OBJ_EVENT_GFX_JAMIE_FIELD_MOVE           ISLAND_START + 2
+#define OBJ_EVENT_GFX_JAMIE_SURFING              ISLAND_START + 3
+#define OBJ_EVENT_GFX_JAMIE_UNDERWATER           ISLAND_START + 4
+#define ISLAND_END                               OBJ_EVENT_GFX_JAMIE_UNDERWATER
+
+
+
+
+#define NUM_OBJ_EVENT_GFX                        (ISLAND_END + 1)
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
@@ -425,6 +436,14 @@
 // Not a real OW palette tag; used for the white flash applied to followers
 #define OBJ_EVENT_PAL_TAG_WHITE                   (OBJ_EVENT_PAL_TAG_NONE - 1)
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
+
+
+// island-game
+#define OBJ_EVENT_PAL_TAG_JAMIE_NORMAL            0x1200
+#define OBJ_EVENT_PAL_TAG_JAMIE_FIELD_MOVE        0x1201
+#define OBJ_EVENT_PAL_TAG_JAMIE_SURFING           0x1202
+#define OBJ_EVENT_PAL_TAG_JAMIE_UNDERWATER        0x1203
+
 
 // This + localId is used as the tileTag
 // for compressed graphicsInfos
