@@ -624,6 +624,7 @@
   ],
   "gMapGroup_MythicIsland": [
     "MythicIsland_IslandEntrance",
-    "MythicIsland_Lake"
+    "MythicIsland_Lake",
+    "MythicIsland_SunkenShrineUnderwater"
   ]
 }
