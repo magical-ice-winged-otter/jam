@@ -4425,7 +4425,7 @@
       "id": "LAYOUT_MYTHIC_ISLAND_LAKE",
       "name": "MythicIsland_Lake_Layout",
       "width": 42,
-      "height": 36,
+      "height": 41,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_EverGrande",
       "border_filepath": "data/layouts/MythicIsland_Lake/border.bin",
@@ -4470,6 +4470,16 @@
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/MythicIsland_SunkenShrine/border.bin",
       "blockdata_filepath": "data/layouts/MythicIsland_SunkenShrine/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_JUNGLE",
+      "name": "MythicIsland_Jungle_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/MythicIsland_Jungle/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_Jungle/map.bin"
     }
   ]
 }

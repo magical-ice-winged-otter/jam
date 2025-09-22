@@ -22,6 +22,11 @@
       "map": "MAP_MYTHIC_ISLAND_LAKE_UNDERWATER",
       "offset": 0,
       "direction": "dive"
+    },
+    {
+      "map": "MAP_MYTHIC_ISLAND_JUNGLE",
+      "offset": -18,
+      "direction": "down"
     }
   ],
   "object_events": [

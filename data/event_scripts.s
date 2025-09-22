@@ -1170,3 +1170,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MythicIsland_LakeUpper/scripts.inc"
 
 	.include "data/maps/MythicIsland_SunkenShrine/scripts.inc"
+
+	.include "data/maps/MythicIsland_Jungle/scripts.inc"
