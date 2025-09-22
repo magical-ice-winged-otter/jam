@@ -1,9 +1,9 @@
 {
-  "id": "MAP_MYTHIC_ISLAND_SUNKEN_SHRINE_UNDERWATER",
-  "name": "MythicIsland_SunkenShrineUnderwater",
-  "layout": "LAYOUT_MYTHIC_ISLAND_SUNKEN_SHRINE_UNDERWATER",
+  "id": "MAP_MYTHIC_ISLAND_LAKE_UNDERWATER",
+  "name": "MythicIsland_LakeUnderwater",
+  "layout": "LAYOUT_MYTHIC_ISLAND_LAKE_UNDERWATER",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ISLANDGAME",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -12,18 +12,12 @@
   "allow_running": false,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [
-    {
-      "map": "MAP_MYTHIC_ISLAND_SUNKEN_SHRINE",
-      "offset": 0,
-      "direction": "emerge"
-    }
-  ],
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 30,
-      "y": 10,
+      "graphics_id": "OBJ_EVENT_GFX_BIG_REGICE_DOLL",
+      "x": 6,
+      "y": 5,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -34,9 +28,9 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BIG_WAILMER_DOLL",
-      "x": 11,
-      "y": 37,
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 36,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,

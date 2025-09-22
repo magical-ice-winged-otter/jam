@@ -1014,3 +1014,11 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+
+
+LittlerootTown_EventScript_Test::
+	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
+	setflag FLAG_TEMP_1
+	removeobject 9
+	@ warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
+	end

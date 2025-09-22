@@ -4434,12 +4434,42 @@
     {
       "id": "LAYOUT_MYTHIC_ISLAND_SUNKEN_SHRINE_UNDERWATER",
       "name": "MythicIsland_SunkenShrineUnderwater_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/MythicIsland_SunkenShrineUnderwater/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_SunkenShrineUnderwater/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_LAKE_UNDERWATER",
+      "name": "MythicIsland_LakeUnderwater_Layout",
+      "width": 42,
+      "height": 36,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/MythicIsland_LakeUnderwater/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_LakeUnderwater/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_LAKE_UPPER",
+      "name": "MythicIsland_LakeUpper_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Fortree",
-      "border_filepath": "data/layouts/MythicIsland_SunkenShrineUnderwater/border.bin",
-      "blockdata_filepath": "data/layouts/MythicIsland_SunkenShrineUnderwater/map.bin"
+      "secondary_tileset": "gTileset_EverGrande",
+      "border_filepath": "data/layouts/MythicIsland_LakeUpper/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_LakeUpper/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_SUNKEN_SHRINE",
+      "name": "MythicIsland_SunkenShrine_Layout",
+      "width": 80,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/MythicIsland_SunkenShrine/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_SunkenShrine/map.bin"
     }
   ]
 }
