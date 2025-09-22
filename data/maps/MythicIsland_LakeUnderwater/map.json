@@ -12,7 +12,13 @@
   "allow_running": false,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": [
+    {
+      "map": "MAP_MYTHIC_ISLAND_LAKE",
+      "offset": 0,
+      "direction": "emerge"
+    }
+  ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BIG_REGICE_DOLL",
