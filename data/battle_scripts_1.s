@@ -5039,10 +5039,7 @@ BattleScript_FaintAttacker::
 	tryactivategulpmissile
 	playfaintcry BS_ATTACKER
 	pause B_WAIT_TIME_LONG
-	dofaintanimation BS_ATTACKER
-	printstring STRINGID_ATTACKERFAINTED
 	cleareffectsonfaint BS_ATTACKER
-	waitanimation
 	tryactivatesoulheart
 	tryactivatereceiver BS_ATTACKER
 	trytrainerslidemsgfirstoff BS_ATTACKER
@@ -5054,18 +5051,13 @@ BattleScript_FaintTarget::
 	tryupdateleaderscresttracker
 	playfaintcry BS_TARGET
 	pause B_WAIT_TIME_LONG
-	dofaintanimation BS_TARGET
-	printstring STRINGID_TARGETFAINTED
 	cleareffectsonfaint BS_TARGET
-	waitanimation
 	tryactivatesoulheart
 	tryactivatereceiver BS_TARGET
 	trytrainerslidemsgfirstoff BS_TARGET
 	return
 
 BattleScript_GiveExp::
-	setbyte sGIVEEXP_STATE, 0
-	getexp BS_TARGET
 	end2
 
 BattleScript_HandleFaintedMon::
@@ -5198,6 +5190,38 @@ BattleScript_LocalBattleWonReward::
 BattleScript_PayDayMoneyAndPickUpItems::
 	givepaydaymoney
 	pickup
+BattleScript_ChooseBoon::
+	printstring STRINGID_WHATBOONWOULDYOULIKE
+	waitmessage B_WAIT_TIME_LONG
+	setbyte sCHOOSE_BOON_STATE, 0
+	chooseboon
+	jumpifbyte CMP_EQUAL, gBattleCommunication + 1, 0, BattleScript_BoonGetItem
+	jumpifbyte CMP_EQUAL, gBattleCommunication + 1, 1, BattleScript_BoonGetXp
+	jumpifbyte CMP_EQUAL, gBattleCommunication + 1, 2, BattleScript_BoonCatchAttempt
+BattleScript_BoonGetItem::
+	dofaintanimation BS_TARGET
+	boonadditem
+	printstring STRINGID_RECEIVEDITEMBOON
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_BoonEnd
+BattleScript_BoonGetXp::
+	dofaintanimation BS_TARGET
+	setbyte sGIVEEXP_STATE, 0
+	getexp BS_TARGET
+	goto BattleScript_BoonEnd
+BattleScript_BoonCatchAttempt::
+	jumpifpartyfull BattleScript_BoonCatchPartyFull
+	boonfindpokeball BattleScript_BoonNoValidPokeballs
+	handleballthrow
+	goto BattleScript_BoonEnd
+BattleScript_BoonNoValidPokeballs::
+	printstring STRINGID_BOONNOVALIDBALLS
+	goto BattleScript_ChooseBoon
+BattleScript_BoonCatchPartyFull::
+	printstring STRINGID_BOONPARTYISFULL
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_ChooseBoon
+BattleScript_BoonEnd::
 	end2
 
 BattleScript_LocalBattleLost::

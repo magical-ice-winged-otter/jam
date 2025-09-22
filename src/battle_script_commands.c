@@ -18356,3 +18356,142 @@ void BS_JumpIfGenConfigLowerThan(void)
     else
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
+
+static void BattleCreateBoonCursorAt(int cursorPosition)
+{
+    u16 src[2];
+    src[0] = 1;
+    src[1] = 2;
+
+    CopyToBgTilemapBufferRect_ChangePalette(0, src, BOON_X_START + 1, BOON_Y_START + 1 + (2 * cursorPosition), 1, 2, 0x11);
+    CopyBgTilemapBufferToVram(0);
+}
+
+static void BattleDestroyBoonCursorAt(int cursorPosition)
+{
+    u16 src[2];
+    src[0] = 0x1016;
+    src[1] = 0x1016;
+
+    CopyToBgTilemapBufferRect_ChangePalette(0, src, BOON_X_START + 1, BOON_Y_START + 1 + (2 * cursorPosition), 1, 2, 0x11);
+    CopyBgTilemapBufferToVram(0);
+}
+
+void BS_ChooseBoon(void)
+{
+    NATIVE_ARGS();
+
+    switch (gBattleScripting.chooseBoonState)
+    {
+    case 0:
+        HandleBattleWindow(BOON_RECT, 0);
+        BattlePutTextOnWindow(gText_BoonChoice, B_WIN_BOON);
+        BattleCreateBoonCursorAt(0);
+        gBattleCommunication[CURSOR_POSITION] = 0;
+        gBattleScripting.chooseBoonState++;
+        break;
+    case 1:
+        if (JOY_NEW(DPAD_UP) && gBattleCommunication[CURSOR_POSITION] > 0)
+        {
+            PlaySE(SE_SELECT);
+            BattleDestroyBoonCursorAt(gBattleCommunication[CURSOR_POSITION]);
+            gBattleCommunication[CURSOR_POSITION]--;
+            BattleCreateBoonCursorAt(gBattleCommunication[CURSOR_POSITION]);
+        }
+        if (JOY_NEW(DPAD_DOWN) && gBattleCommunication[CURSOR_POSITION] < 2)
+        {
+            PlaySE(SE_SELECT);
+            BattleDestroyBoonCursorAt(gBattleCommunication[CURSOR_POSITION]);
+            gBattleCommunication[CURSOR_POSITION]++;
+            BattleCreateBoonCursorAt(gBattleCommunication[CURSOR_POSITION]);
+        }
+        if (JOY_NEW(A_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+            HandleBattleWindow(BOON_RECT, WINDOW_CLEAR);
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        break;
+    }
+}
+
+#define BOON_MAX_ITEMS 32
+
+// include/constants/species.h
+// include/constants/items.h
+
+enum BoonItems
+{
+    BOON_ITEMS_BASIC,
+    BOON_ITEMS_GREAT,
+    BOON_ITEMS_ULTRA,
+    BOON_ITEMS_LEGENDARY,
+    BOON_ITEMS_COUNT
+};
+
+struct BoonPokemonInfo
+{
+    u8 requiredBall;
+    u8 items;
+};
+
+static u16 sBoonItems[BOON_ITEMS_COUNT][BOON_MAX_ITEMS] =
+{
+    [BOON_ITEMS_BASIC] = { ITEM_POKE_BALL, ITEM_POTION, 0 },
+    [BOON_ITEMS_GREAT] = { ITEM_GREAT_BALL, ITEM_SUPER_POTION, 0 },
+    [BOON_ITEMS_ULTRA] = { ITEM_ULTRA_BALL, ITEM_HYPER_POTION, 0 },
+    [BOON_ITEMS_LEGENDARY] = { ITEM_MASTER_BALL, ITEM_FULL_RESTORE, 0 },
+};
+
+static struct BoonPokemonInfo sBoonPokemonInfo[NUM_SPECIES] =
+{
+    [SPECIES_WEEDLE] = { ITEM_POKE_BALL, BOON_ITEMS_BASIC },
+    [SPECIES_KAKUNA] = { ITEM_GREAT_BALL, BOON_ITEMS_GREAT },
+    [SPECIES_BEEDRILL] = { ITEM_ULTRA_BALL, BOON_ITEMS_ULTRA },
+    [SPECIES_ARTICUNO] = { ITEM_MASTER_BALL, BOON_ITEMS_LEGENDARY },
+};
+
+void BS_BoonFindPokeball(void)
+{
+    NATIVE_ARGS(const u8 *failInstr);
+
+    u16 targetSpecies = gBattleMons[gBattlerTarget].species;
+    u16 requiredBall = sBoonPokemonInfo[targetSpecies].requiredBall;
+    gLastUsedItem = requiredBall;
+
+    if (CheckBagHasItem(requiredBall, 1))
+    {
+        RemoveBagItem(requiredBall, 1);
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->failInstr;
+    }
+}
+
+void BS_JumpIfPartyFull(void)
+{
+    NATIVE_ARGS(const u8 *jumpInstr);
+    u8 partyCount = CalculatePlayerPartyCount();
+    gBattlescriptCurrInstr = partyCount >= PARTY_SIZE ? cmd->jumpInstr : cmd->nextInstr;
+}
+
+void BS_BoonAddItem(void)
+{
+    NATIVE_ARGS();
+
+    u16 targetSpecies = gBattleMons[gBattlerTarget].species;
+    u8 items = sBoonPokemonInfo[targetSpecies].items;
+
+    // Sort of like a homemade strlen on our null-terminated item lists
+    u8 itemCount = 0;
+    while (sBoonItems[items][itemCount] != 0) 
+        itemCount++;
+
+    u32 randomIndex = Random32() % itemCount;
+    u8 randomItem = sBoonItems[items][randomIndex];
+    AddBagItem(randomItem, 1);
+    gLastUsedItem = randomItem;
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
