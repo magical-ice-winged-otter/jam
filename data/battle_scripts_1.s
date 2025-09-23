@@ -2695,6 +2695,7 @@ BattleScript_HitFromCritCalc::
 	adjustdamage
 BattleScript_HitFromAtkAnimation::
 	call BattleScript_Hit_RetFromAtkAnimation
+	checkteamslost BattleScript_MoveEnd
 BattleScript_TryFaintMon::
 	tryfaintmon BS_TARGET
 BattleScript_MoveEnd::
@@ -5212,6 +5213,7 @@ BattleScript_BoonGetXp::
 BattleScript_BoonCatchAttempt::
 	jumpifpartyfull BattleScript_BoonCatchPartyFull
 	boonfindpokeball BattleScript_BoonNoValidPokeballs
+	setbyte sEXP_CATCH, FALSE
 	handleballthrow
 	goto BattleScript_BoonEnd
 BattleScript_BoonNoValidPokeballs::
@@ -9048,6 +9050,7 @@ BattleScript_EffectHitSetTerrain::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_TryFaint:
 	tryfaintmon BS_TARGET
+	dofaintanimation BS_TARGET
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSteelRoller::

@@ -137,25 +137,25 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-    setwildbattle SPECIES_WEEDLE 1
+    setwildbattle SPECIES_WEEDLE 15
     dowildbattle
 	release
 	end
 
 Debug_EventScript_Script_2::
-    setwildbattle SPECIES_KAKUNA 1
+    setwildbattle SPECIES_KAKUNA 15
     dowildbattle
 	release
 	end
 
 Debug_EventScript_Script_3::
-    setwildbattle SPECIES_BEEDRILL 1
+    setwildbattle SPECIES_BEEDRILL 15
     dowildbattle
 	release
 	end
 
 Debug_EventScript_Script_4::
-    setwildbattle SPECIES_ARTICUNO 1
+    setwildbattle SPECIES_ARTICUNO 15
     dowildbattle
 	release
 	end

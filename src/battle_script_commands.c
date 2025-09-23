@@ -1964,6 +1964,12 @@ static void Cmd_adjustdamage(void)
             gSpecialStatuses[battlerDef].enduredDamage = TRUE;
             gProtectStructs[battlerDef].assuranceDoubled = TRUE;
         }
+
+        // BOON : Don't allow enemies to actually die, just leave them on 1
+        if (!IsOnPlayerSide(battlerDef) && gBattleStruct->moveDamage[battlerDef] >= gBattleMons[battlerDef].hp)
+        {
+            gBattleStruct->moveDamage[battlerDef] = gBattleMons[battlerDef].hp - 1;
+        }
     }
 
     if (calcSpreadMoveDamage)
@@ -4883,7 +4889,8 @@ static bool32 NoAliveMonsForOpponent(void)
         }
     }
 
-    return (HP_count == 0);
+    // BOON : ensure you win if the other party is at one
+    return (HP_count <= 1);
 }
 
 bool32 NoAliveMonsForEitherParty(void)
@@ -18357,6 +18364,42 @@ void BS_JumpIfGenConfigLowerThan(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+#define BOON_MAX_ITEMS 32
+
+// include/constants/species.h
+// include/constants/items.h
+
+enum BoonItems
+{
+    BOON_ITEMS_BASIC,
+    BOON_ITEMS_GREAT,
+    BOON_ITEMS_ULTRA,
+    BOON_ITEMS_LEGENDARY,
+    BOON_ITEMS_COUNT
+};
+
+struct BoonPokemonInfo
+{
+    u8 requiredBall;
+    u8 items;
+};
+
+static u16 sBoonItems[BOON_ITEMS_COUNT][BOON_MAX_ITEMS] =
+{
+    [BOON_ITEMS_BASIC] = { ITEM_POKE_BALL, ITEM_POTION, 0 },
+    [BOON_ITEMS_GREAT] = { ITEM_GREAT_BALL, ITEM_SUPER_POTION, 0 },
+    [BOON_ITEMS_ULTRA] = { ITEM_ULTRA_BALL, ITEM_HYPER_POTION, 0 },
+    [BOON_ITEMS_LEGENDARY] = { ITEM_MASTER_BALL, ITEM_FULL_RESTORE, 0 },
+};
+
+static struct BoonPokemonInfo sBoonPokemonInfo[NUM_SPECIES] =
+{
+    [SPECIES_WEEDLE] = { ITEM_POKE_BALL, BOON_ITEMS_BASIC },
+    [SPECIES_KAKUNA] = { ITEM_GREAT_BALL, BOON_ITEMS_GREAT },
+    [SPECIES_BEEDRILL] = { ITEM_ULTRA_BALL, BOON_ITEMS_ULTRA },
+    [SPECIES_ARTICUNO] = { ITEM_MASTER_BALL, BOON_ITEMS_LEGENDARY },
+};
+
 static void BattleCreateBoonCursorAt(int cursorPosition)
 {
     u16 src[2];
@@ -18409,47 +18452,12 @@ void BS_ChooseBoon(void)
         {
             PlaySE(SE_SELECT);
             HandleBattleWindow(BOON_RECT, WINDOW_CLEAR);
+            CopyBgTilemapBufferToVram(0);
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         break;
     }
 }
-
-#define BOON_MAX_ITEMS 32
-
-// include/constants/species.h
-// include/constants/items.h
-
-enum BoonItems
-{
-    BOON_ITEMS_BASIC,
-    BOON_ITEMS_GREAT,
-    BOON_ITEMS_ULTRA,
-    BOON_ITEMS_LEGENDARY,
-    BOON_ITEMS_COUNT
-};
-
-struct BoonPokemonInfo
-{
-    u8 requiredBall;
-    u8 items;
-};
-
-static u16 sBoonItems[BOON_ITEMS_COUNT][BOON_MAX_ITEMS] =
-{
-    [BOON_ITEMS_BASIC] = { ITEM_POKE_BALL, ITEM_POTION, 0 },
-    [BOON_ITEMS_GREAT] = { ITEM_GREAT_BALL, ITEM_SUPER_POTION, 0 },
-    [BOON_ITEMS_ULTRA] = { ITEM_ULTRA_BALL, ITEM_HYPER_POTION, 0 },
-    [BOON_ITEMS_LEGENDARY] = { ITEM_MASTER_BALL, ITEM_FULL_RESTORE, 0 },
-};
-
-static struct BoonPokemonInfo sBoonPokemonInfo[NUM_SPECIES] =
-{
-    [SPECIES_WEEDLE] = { ITEM_POKE_BALL, BOON_ITEMS_BASIC },
-    [SPECIES_KAKUNA] = { ITEM_GREAT_BALL, BOON_ITEMS_GREAT },
-    [SPECIES_BEEDRILL] = { ITEM_ULTRA_BALL, BOON_ITEMS_ULTRA },
-    [SPECIES_ARTICUNO] = { ITEM_MASTER_BALL, BOON_ITEMS_LEGENDARY },
-};
 
 void BS_BoonFindPokeball(void)
 {
@@ -18462,6 +18470,9 @@ void BS_BoonFindPokeball(void)
     if (CheckBagHasItem(requiredBall, 1))
     {
         RemoveBagItem(requiredBall, 1);
+        gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
+        gBattle_BG0_X = 0;
+        gBattle_BG0_Y = 0;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else

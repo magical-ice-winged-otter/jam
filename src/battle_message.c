@@ -898,9 +898,9 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_POWERCONSTRUCTPRESENCEOFMANY]         = COMPOUND_STRING("You sense the presence of many!"),
     [STRINGID_POWERCONSTRUCTTRANSFORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} transformed into its Complete Forme!"),
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
-    [STRINGID_WHATBOONWOULDYOULIKE]                 = COMPOUND_STRING("Which reward will you choose?"),
+    [STRINGID_WHATBOONWOULDYOULIKE]                 = COMPOUND_STRING("{B_DEF_NAME} is too weak to fight!\nWhich reward will you choose?"),
     [STRINGID_RECEIVEDITEMBOON]                     = COMPOUND_STRING("You got {B_LAST_ITEM}!\p"),
-    [STRINGID_BOONNOVALIDBALLS]                     = COMPOUND_STRING("You need a {B_LAST_ITEM} to catch this Pokemon.\p"),
+    [STRINGID_BOONNOVALIDBALLS]                     = COMPOUND_STRING("You need a {B_LAST_ITEM} to catch {B_DEF_NAME}.\p"),
     [STRINGID_BOONPARTYISFULL]                      = COMPOUND_STRING("Your party is currently full.\p"),
 };
 
