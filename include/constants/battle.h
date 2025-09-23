@@ -604,6 +604,7 @@ enum BattleEnvironments
 #define B_WIN_VS_OUTCOME_LEFT    22
 #define B_WIN_VS_OUTCOME_RIGHT   23
 #define B_WIN_MOVE_DESCRIPTION   24
+#define B_WIN_BOON               25
 
 // The following are duplicate id values for windows that Battle Arena uses differently.
 #define ARENA_WIN_PLAYER_NAME      15
@@ -647,6 +648,13 @@ enum BattleEnvironments
 
 // Constants for Torment
 #define PERMANENT_TORMENT   0xF
+
+// Boon constants
+#define BOON_X_START 22
+#define BOON_X_END 29
+#define BOON_Y_START 6
+#define BOON_Y_END 13
+#define BOON_RECT BOON_X_START, BOON_Y_START, BOON_X_END, BOON_Y_END
 
 // Constants for B_VAR_STARTING_STATUS
 // Timer value controlled by B_VAR_STARTING_STATUS_TIMER

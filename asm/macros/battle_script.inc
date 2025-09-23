@@ -2531,3 +2531,21 @@
 	.byte \gen
 	.4byte \jumpInstr
 	.endm
+
+	.macro chooseboon
+	callnative BS_ChooseBoon
+	.endm
+
+    .macro boonadditem
+    callnative BS_BoonAddItem
+    .endm
+
+    .macro jumpifpartyfull jumpInstr:req
+    callnative BS_JumpIfPartyFull
+    .4byte \jumpInstr
+    .endm
+
+    .macro boonfindpokeball failInstr:req
+    callnative BS_BoonFindPokeball
+    .4byte \failInstr
+    .endm
