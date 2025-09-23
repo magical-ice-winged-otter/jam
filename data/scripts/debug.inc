@@ -165,6 +165,8 @@ Debug_EventScript_Script_5::
 	goto_if_ne VAR_RESULT, PARTY_SIZE, Debug_EventScript_Script_5_HasMove
 	goto_if_eq VAR_RESULT, PARTY_SIZE, Debug_EventScript_Script_5_MissingMove
 Debug_EventScript_Script_5_HasMove::
+	playmoncry VAR_0x8004, CRY_MODE_NORMAL
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	msgbox Debug_EventScript_Script_5_HasMove_Text, MSGBOX_DEFAULT
 	goto Debug_EventScript_Script_5_End
 Debug_EventScript_Script_5_MissingMove::
@@ -175,7 +177,7 @@ Debug_EventScript_Script_5_End::
 	end
 
 Debug_EventScript_Script_5_HasMove_Text:
-	.string "You have the move!$"
+	.string "{STR_VAR_1} have the move!$"
 Debug_EventScript_Script_5_MissingMove_Text:
 	.string "You are missing the move$"
 
