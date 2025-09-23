@@ -629,6 +629,8 @@
     "MythicIsland_LakeUpper",
     "MythicIsland_LakeUnderwater",
     "MythicIsland_SunkenShrine",
-    "MythicIsland_Jungle"
+    "MythicIsland_Jungle",
+    "MythicIsland_Tropics",
+    "MythicIsland_Desert"
   ]
 }

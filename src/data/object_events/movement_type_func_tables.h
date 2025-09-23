@@ -387,6 +387,26 @@ u8 (*const gMovementTypeFuncs_CopyPlayer[])(struct ObjectEvent *, struct Sprite 
     MovementType_CopyPlayer_Step2,
 };
 
+u8 (*const gMovementTypeFuncs_WanderInGrass[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementType_WanderAround_Step0,
+    MovementType_WanderAround_Step1,
+    MovementType_WanderAround_Step2,
+    MovementType_Wander_Step3,
+    MovementType_WanderInGrass_Step4,
+    MovementType_WanderAround_Step5,
+    MovementType_WanderAround_Step6,
+};
+
+u8 (*const gMovementTypeFuncs_WanderInWater[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementType_WanderAround_Step0,
+    MovementType_WanderAround_Step1,
+    MovementType_WanderAround_Step2,
+    MovementType_Wander_Step3,
+    MovementType_WanderInWater_Step4,
+    MovementType_WanderAround_Step5,
+    MovementType_WanderAround_Step6,
+};
+
 bool8 (*const gCopyPlayerMovementFuncs[])(struct ObjectEvent *, struct Sprite *, u8, bool8(u8)) = {
     [COPY_MOVE_NONE]          = CopyablePlayerMovement_None,
     [COPY_MOVE_FACE]          = CopyablePlayerMovement_FaceDirection,

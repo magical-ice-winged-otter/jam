@@ -21,11 +21,11 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_BIG_LAPRAS_DOLL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GYARADOS_MEGA)",
       "x": 10,
       "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",

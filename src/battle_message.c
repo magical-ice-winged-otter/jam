@@ -168,6 +168,7 @@ static const u8 sText_TwoInGameTrainersDefeated[] = _("You defeated {B_TRAINER1_
 const u8 gText_drastically[] = _("drastically ");
 const u8 gText_severely[] = _("severely ");
 static const u8 sText_TerrainReturnedToNormal[] = _("The terrain returned to normal!"); // Unused
+const u8 gText_BoonChoice[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Item\nXP\nCatch");
 
 const u8 *const gBattleStringsTable[STRINGID_COUNT] =
 {
@@ -897,6 +898,10 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_POWERCONSTRUCTPRESENCEOFMANY]         = COMPOUND_STRING("You sense the presence of many!"),
     [STRINGID_POWERCONSTRUCTTRANSFORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} transformed into its Complete Forme!"),
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
+    [STRINGID_WHATBOONWOULDYOULIKE]                 = COMPOUND_STRING("{B_DEF_NAME} is too weak to fight!\nWhich reward will you choose?"),
+    [STRINGID_RECEIVEDITEMBOON]                     = COMPOUND_STRING("You got {B_LAST_ITEM}!\p"),
+    [STRINGID_BOONNOVALIDBALLS]                     = COMPOUND_STRING("You need a {B_LAST_ITEM} to catch {B_DEF_NAME}.\p"),
+    [STRINGID_BOONPARTYISFULL]                      = COMPOUND_STRING("Your party is currently full.\p"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1810,6 +1815,16 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
         .bgColor = TEXT_DYNAMIC_COLOR_5,
         .shadowColor = TEXT_DYNAMIC_COLOR_6,
     },
+    [B_WIN_BOON] = {
+        .fillValue = PIXEL_FILL(0xE),
+        .fontId = FONT_NORMAL,
+        .x = 0,
+        .y = 1,
+        .speed = 0,
+        .fgColor = 13,
+        .bgColor = 14,
+        .shadowColor = 15,
+    },
 };
 
 static const struct BattleWindowText sTextOnWindowsInfo_Arena[] =
@@ -2054,6 +2069,16 @@ static const struct BattleWindowText sTextOnWindowsInfo_Arena[] =
         .fgColor = TEXT_DYNAMIC_COLOR_4,
         .bgColor = TEXT_DYNAMIC_COLOR_5,
         .shadowColor = TEXT_DYNAMIC_COLOR_6,
+    },
+    [B_WIN_BOON] = {
+        .fillValue = PIXEL_FILL(0xE),
+        .fontId = FONT_NORMAL,
+        .x = 0,
+        .y = 1,
+        .speed = 0,
+        .fgColor = 13,
+        .bgColor = 14,
+        .shadowColor = 15,
     },
 };
 
