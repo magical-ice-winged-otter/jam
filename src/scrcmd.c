@@ -3253,3 +3253,22 @@ void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)
     if (ctx->breakOnTrainerBattle && sScriptConditionTable[condition][ctx->comparisonResult] == 1)
         StopScript(ctx);
 }
+
+void Script_CheckMove(struct ScriptContext *ctx)
+{
+    u16 move = ScriptReadHalfword(ctx);
+    gSpecialVar_Result = PARTY_SIZE;
+
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+        if (!species)
+            break;
+        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && MonKnowsMove(&gPlayerParty[i], move) == TRUE)
+        {
+            gSpecialVar_Result = i;
+            gSpecialVar_0x8004 = species;
+            break;
+        }
+    }
+}
