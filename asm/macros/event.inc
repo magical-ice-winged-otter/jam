@@ -2670,3 +2670,16 @@
 	callnative Script_CheckMove
 	.2byte \move
 	.endm
+
+	.macro setstepfunction destination:req
+	callnative Script_SetStepFunction
+	.4byte \destination
+	.endm
+
+	.macro clearstepfunction
+	callnative Script_ClearStepFunction
+	.endm
+
+	.macro hidemapnamepopup
+	callnative HideMapNamePopUpWindow
+	.endm

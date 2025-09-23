@@ -19,6 +19,7 @@
 #include "event_object_movement.h"
 #include "event_scripts.h"
 #include "fake_rtc.h"
+#include "field_control_avatar.h"
 #include "field_message_box.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
@@ -3271,4 +3272,16 @@ void Script_CheckMove(struct ScriptContext *ctx)
             break;
         }
     }
+}
+
+void Script_SetStepFunction(struct ScriptContext *ctx)
+{
+    gStepScript = (const u8 *)ScriptReadWord(ctx);
+    gStepScriptMapLayoutId = gMapHeader.mapLayoutId;
+}
+
+void Script_ClearStepFunction(struct ScriptContext *ctx)
+{
+    gStepScript = 0;
+    gStepScriptMapLayoutId = 0;
 }
