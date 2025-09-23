@@ -182,8 +182,24 @@ Debug_EventScript_Script_5_MissingMove_Text:
 	.string "You are missing the move$"
 
 Debug_EventScript_Script_6::
+	setstepfunction Debug_EventScript_Script_6_OnStep
 	release
 	end
+
+Debug_EventScript_Script_6_OnStep::
+	addvar VAR_TEMP_0, 1
+	goto_if_eq VAR_TEMP_0, 10, Debug_EventScript_Script_6_ReachedStepLimit
+	release
+	end
+
+Debug_EventScript_Script_6_ReachedStepLimit::
+	hidemapnamepopup
+	msgbox Debug_EventScript_Script_6_ReachedStepLimit_Text, MSGBOX_DEFAULT
+	release
+	end
+
+Debug_EventScript_Script_6_ReachedStepLimit_Text:
+	.string "You took 10 steps!$"
 
 Debug_EventScript_Script_7::
 	release

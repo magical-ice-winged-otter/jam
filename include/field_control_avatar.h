@@ -22,6 +22,9 @@ struct FieldInput
     u8 dpadDirection;
 };
 
+extern const u8 *gStepScript;
+extern u16 gStepScriptMapLayoutId;
+
 void FieldClearPlayerInput(struct FieldInput *pStruct);
 void FieldGetPlayerInput(struct FieldInput *pStruct, u16 keys, u16 heldKeys);
 int ProcessPlayerFieldInput(struct FieldInput *pStruct);
