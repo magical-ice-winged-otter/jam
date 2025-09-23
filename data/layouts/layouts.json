@@ -4440,6 +4440,16 @@
       "secondary_tileset": "gTileset_Mossdeep",
       "border_filepath": "data/layouts/MythicIsland_Tropics/border.bin",
       "blockdata_filepath": "data/layouts/MythicIsland_Tropics/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_DESERT",
+      "name": "MythicIsland_Desert_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MythicIsland_Desert/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_Desert/map.bin"
     }
   ]
 }

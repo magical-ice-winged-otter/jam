@@ -625,6 +625,7 @@
   "gMapGroup_MythicIsland": [
     "MythicIsland_IslandEntrance",
     "MythicIsland_Lake",
-    "MythicIsland_Tropics"
+    "MythicIsland_Tropics",
+    "MythicIsland_Desert"
   ]
 }
