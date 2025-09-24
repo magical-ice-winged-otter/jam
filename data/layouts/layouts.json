@@ -4500,6 +4500,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/MythicIsland_Desert/border.bin",
       "blockdata_filepath": "data/layouts/MythicIsland_Desert/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_PLAYER_SPAWN",
+      "name": "MythicIsland_PlayerSpawn_Layout",
+      "width": 7,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_InsideShip",
+      "border_filepath": "data/layouts/MythicIsland_PlayerSpawn/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_PlayerSpawn/map.bin"
     }
   ]
 }

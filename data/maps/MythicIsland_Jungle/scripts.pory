@@ -1,1 +1,160 @@
+const YANMA_FLAG = FLAG_TEMP_1
+const YANMA_OBJECT = 2
+
+const LIEPARD_FLAG_1 = FLAG_TEMP_2
+const LIEPARD_OBJECT_1 = 3
+
+const TANGELA_FLAG = FLAG_TEMP_3
+const TANGELA_OBJECT = 4
+
+const LIEPARD_FLAG_2 = FLAG_TEMP_4
+const LIEPARD_OBJECT_2 = 5
+
 mapscripts MythicIsland_Jungle_MapScripts {}
+
+
+
+// Pokemon
+script MythicIsland_Jungle_Encounter_Yanma {
+    lock 
+    faceplayer
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_YANMA, 30, ITEM_WIDE_LENS, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_SIGNAL_BEAM, MOVE_WING_ATTACK, MOVE_DOUBLE_TEAM, MOVE_DETECT)
+    playmoncry(SPECIES_YANMA, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            break
+        case B_OUTCOME_WON:
+            setflag(YANMA_FLAG)
+            removeobject(YANMA_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(YANMA_FLAG)
+            removeobject(YANMA_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(YANMA_FLAG)
+            removeobject(YANMA_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Tangela {
+    lock 
+    faceplayer
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_TANGELA, 30, ITEM_BIG_ROOT, NUM_NATURES, 2, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_STUN_SPORE, MOVE_INGRAIN)
+    playmoncry(SPECIES_TANGELA, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            break
+        case B_OUTCOME_WON:
+            setflag(TANGELA_FLAG)
+            removeobject(TANGELA_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(TANGELA_FLAG)
+            removeobject(TANGELA_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(TANGELA_FLAG)
+            removeobject(TANGELA_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Liepard {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LIEPARD, 35, ITEM_NORMAL_GEM, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_FAKE_OUT, MOVE_COVET, MOVE_ENCORE, MOVE_NIGHT_SLASH)
+    playmoncry(SPECIES_LIEPARD, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(LIEPARD_FLAG_1)
+            removeobject(LIEPARD_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(LIEPARD_FLAG_1)
+            removeobject(LIEPARD_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(LIEPARD_FLAG_1)
+            removeobject(LIEPARD_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(LIEPARD_FLAG_1)
+            removeobject(LIEPARD_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Liepard2{
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LIEPARD, 35, ITEM_NORMAL_GEM, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_FAKE_OUT, MOVE_COVET, MOVE_ENCORE, MOVE_NIGHT_SLASH)
+    playmoncry(SPECIES_LIEPARD, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(LIEPARD_FLAG_2)
+            removeobject(LIEPARD_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(LIEPARD_FLAG_2)
+            removeobject(LIEPARD_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(LIEPARD_FLAG_2)
+            removeobject(LIEPARD_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(LIEPARD_FLAG_2)
+            removeobject(LIEPARD_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}

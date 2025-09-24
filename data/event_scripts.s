@@ -1176,3 +1176,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MythicIsland_Tropics/scripts.inc"
 
 	.include "data/maps/MythicIsland_Desert/scripts.inc"
+
+	.include "data/maps/MythicIsland_PlayerSpawn/scripts.inc"

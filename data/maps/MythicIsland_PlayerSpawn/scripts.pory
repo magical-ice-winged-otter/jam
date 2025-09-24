@@ -1,0 +1,12 @@
+mapscripts MythicIsland_PlayerSpawn_MapScripts {}
+
+
+
+script MythicIsland_PlayerSpawn_EventScript_Bag {
+    playse(SE_M_SAND_ATTACK)
+    waitse
+    msgbox(format(
+        "Accessing Porta-PC 2025..."
+    ))
+    goto(EventScript_PC)
+}

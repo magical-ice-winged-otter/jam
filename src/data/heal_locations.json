@@ -186,6 +186,12 @@
       "y": 52,
       "respawn_map": "MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_FRONTIER_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_MYTHIC_ISLAND_ISLAND_ENTRANCE",
+      "map": "MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE",
+      "x": 25,
+      "y": 29
     }
   ]
 }

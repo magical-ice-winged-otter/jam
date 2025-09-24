@@ -631,6 +631,7 @@
     "MythicIsland_SunkenShrine",
     "MythicIsland_Jungle",
     "MythicIsland_Tropics",
-    "MythicIsland_Desert"
+    "MythicIsland_Desert",
+    "MythicIsland_PlayerSpawn"
   ]
 }

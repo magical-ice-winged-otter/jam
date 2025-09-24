@@ -1,1 +1,278 @@
 mapscripts MythicIsland_IslandEntrance_MapScripts {}
+
+
+script MythicIsland_IslandEntrance_Sign {
+    msgbox(format(
+        "The writing on the sign are barely legible.\p"
+        "“...T...rn b...c...”\n“...Prevent your ...e...th...”"
+    ), MSGBOX_SIGN)
+}
+
+script MythicIsland_IslandEntrance_EnterBoat {
+    lock
+    msgbox(format(
+        "Enter your boat?"
+    ), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES) {
+        warp(MAP_MYTHIC_ISLAND_PLAYER_SPAWN, 3, 7)
+    }
+    closemessage
+    release
+}
+
+script MythicIsland_IslandEntrance_Totem {
+    lock
+    if(!flag(FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE)) {
+        playse(SE_M_MOONLIGHT)
+        waitse
+        msgbox(format(
+            "> The statue glows with a mysterious aura..."
+        ))
+        setflag(FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE)
+    }
+    playse(SE_M_HEAL_BELL)
+    waitse
+	special(HealPlayerParty)
+    msgbox(format(
+        "> Being near the statue fills your Pokémon with restoration.\p"
+        "Use the statue to teleport?"
+    ), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES) {
+        goto(MythicIsland_StatueTeleport_Entrance)
+    }
+    else {
+        goto(MythicIsland_IslandEntrance_Totem_End)
+    }
+
+    MythicIsland_StatueTeleport_Entrance:
+        dynmultipush("Cancel", 0)
+        dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_NONE)
+        switch (var(VAR_RESULT)) {
+            default: 
+                goto(MythicIsland_IslandEntrance_Totem_End)
+        }
+
+    MythicIsland_IslandEntrance_Totem_End:
+        closemessage
+        release
+}
+
+script MythicIsland_IslandEntrance_OmastarMerchant {
+    lock
+    faceplayer
+    msgbox(format(
+        "Greetings, brave traveler! Care to take a look at my shiny rock collection? I'd be willing to toss one of them your way, for the price of a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY}."
+    ))
+
+    MythicIsland_OmastarShop:
+        dynmultipush("I'm good", 0)
+        dynmultipush("Fire Stone", 211)
+        dynmultipush("Water Stone", 212)
+        dynmultipush("Thunder Stone", 213)
+        dynmultipush("Leaf Stone", 214)
+        dynmultipush("Ice Stone", 215)
+        dynmultipush("Sun Stone", 215)
+        dynmultipush("Moon Stone", 216)
+        dynmultipush("Shiny Stone", 217)
+        dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_SHOW_ITEM)
+        switch (var(VAR_RESULT)) {
+            case 211:
+                checkitem(ITEM_BIG_PEARL)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Fire Stone{COLOR DARK_GRAY}?"
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_FIRE_STONE)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_PEARL)
+                        msgbox(format(
+                            "Thanks for the swap! Is there anything else you would like?"
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_OmastarShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                    ))
+                }
+            case 212:
+                checkitem(ITEM_BIG_PEARL)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Water Stone{COLOR DARK_GRAY}?"
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_WATER_STONE)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_PEARL)
+                        msgbox(format(
+                            "Thanks for the swap! Is there anything else you would like?"
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_OmastarShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                    ))
+                }
+            case 213:
+                checkitem(ITEM_BIG_PEARL)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Leaf Stone{COLOR DARK_GRAY}?"
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_LEAF_STONE)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_PEARL)
+                        msgbox(format(
+                            "Thanks for the swap! Is there anything else you would like?"
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_OmastarShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                    ))
+                }
+            case 214:
+                checkitem(ITEM_BIG_PEARL)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for an {COLOR BLUE}Ice Stone{COLOR DARK_GRAY}?"
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_ICE_STONE)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_PEARL)
+                        msgbox(format(
+                            "Thanks for the swap! Is there anything else you would like?"
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_OmastarShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                    ))
+                }
+            case 215:
+                checkitem(ITEM_BIG_PEARL)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Sun Stone{COLOR DARK_GRAY}?"
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_SUN_STONE)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_PEARL)
+                        msgbox(format(
+                            "Thanks for the swap! Is there anything else you would like?"
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_OmastarShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                    ))
+                }
+            case 216:
+                checkitem(ITEM_BIG_PEARL)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Moon Stone{COLOR DARK_GRAY}?"
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_MOON_STONE)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_PEARL)
+                        msgbox(format(
+                            "Thanks for the swap! Is there anything else you would like?"
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_OmastarShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                    ))
+                }
+            case 217:
+                checkitem(ITEM_BIG_PEARL)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Shiny Stone{COLOR DARK_GRAY}?"
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_SHINY_STONE)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_PEARL)
+                        msgbox(format(
+                            "Thanks for the swap! Is there anything else you would like?"
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_OmastarShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
+                    ))
+                }
+            default:
+                goto(MythicIsland_OmastarShopEnd)
+        }
+
+    MythicIsland_OmastarShopEnd:
+        msgbox(format(
+            "Praise Helix, my friend."
+        ))
+        closemessage
+        release
+}
