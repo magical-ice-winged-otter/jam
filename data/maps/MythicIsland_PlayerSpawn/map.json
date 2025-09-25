@@ -3,7 +3,7 @@
   "name": "MythicIsland_PlayerSpawn",
   "layout": "LAYOUT_MYTHIC_ISLAND_PLAYER_SPAWN",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_FARAWAY_ISLAND",
+  "region_map_section": "MAPSEC_ISLANDGAME",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",

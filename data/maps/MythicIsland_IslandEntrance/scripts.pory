@@ -1,5 +1,87 @@
 mapscripts MythicIsland_IslandEntrance_MapScripts {}
 
+movement teleportSpin {
+    face_left
+	delay_16
+	face_up
+	delay_16
+	face_right
+	delay_16
+	face_down
+    face_left
+	delay_8
+	face_up
+	delay_8
+	face_right
+	delay_8
+	face_down
+    face_left
+	delay_4
+	face_up
+	delay_4
+	face_right
+	delay_4
+	face_down
+    face_left
+	delay_2
+	face_up
+	delay_2
+	face_right
+	delay_2
+	face_down
+	delay_2
+	face_left
+	delay_2
+	face_up
+	delay_2
+	face_right
+	delay_2
+	face_down
+	delay_2
+	face_left
+	delay_2
+	face_up
+	delay_2
+	face_right
+	delay_2
+	face_down
+	delay_2
+	face_left
+	delay_2
+	face_up
+	delay_2
+	face_right
+	delay_2
+	face_down
+	delay_2
+	face_left
+	delay_2
+	face_up
+	delay_2
+	face_right
+	delay_2
+	face_down
+	delay_2
+	face_left
+	delay_2
+	face_up
+	delay_2
+	face_player
+	step_end
+}
+
+movement teleportFly {
+    face_up
+	disable_anim
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	step_end
+}
+
 
 script MythicIsland_IslandEntrance_Sign {
     msgbox(format(
@@ -46,8 +128,19 @@ script MythicIsland_IslandEntrance_Totem {
 
     MythicIsland_StatueTeleport_Entrance:
         dynmultipush("Cancel", 0)
+        if(flag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE)) {
+            dynmultipush("Flooded Sanctum", 1)
+        }
         dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_NONE)
         switch (var(VAR_RESULT)) {
+            case 1:
+                closemessage
+                playse(SE_M_PSYBEAM)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
+                waitmovement(0)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
+                fadescreen(FADE_TO_BLACK)
+                warp(MAP_MYTHIC_ISLAND_SUNKEN_SHRINE, 13, 62)
             default: 
                 goto(MythicIsland_IslandEntrance_Totem_End)
         }
@@ -57,9 +150,21 @@ script MythicIsland_IslandEntrance_Totem {
         release
 }
 
+
+
+
+
+
+
+
+
+
+
+
 script MythicIsland_IslandEntrance_OmastarMerchant {
     lock
     faceplayer
+    playmoncry(SPECIES_OMASTAR, CRY_MODE_NORMAL)
     msgbox(format(
         "Greetings, brave traveler! Care to take a look at my shiny rock collection? I'd be willing to toss one of them your way, for the price of a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY}."
     ))

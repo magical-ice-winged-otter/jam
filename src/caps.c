@@ -9,16 +9,11 @@ u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
-        // {FLAG_BADGE01_GET, 15},
-        // {FLAG_BADGE02_GET, 19},
-        // {FLAG_BADGE03_GET, 24},
-        // {FLAG_BADGE04_GET, 29},
-        // {FLAG_BADGE05_GET, 31},
-        // {FLAG_BADGE06_GET, 33},
-        // {FLAG_BADGE07_GET, 42},
-        // {FLAG_BADGE08_GET, 46},
-        // {FLAG_IS_CHAMPION, 58},
-        
+
+        // {FLAG_MYTHIC_ISLAND_RAGING_BOLT_DEFEATED, 35}
+        // {FLAG_MYTHIC_ISLAND_GOUGING_FIRE_DEFEATED, 40}
+        {FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED, 45}
+        // {FLAG_MYTHIC_ISLAND_GAME_COMPLETED, 50}
     };
 
     u32 i;

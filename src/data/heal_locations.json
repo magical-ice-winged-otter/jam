@@ -192,6 +192,12 @@
       "map": "MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE",
       "x": 25,
       "y": 29
+    },
+    {
+      "id": "HEAL_LOCATION_MYTHIC_ISLAND_SUNKEN_SHRINE",
+      "map": "MAP_MYTHIC_ISLAND_SUNKEN_SHRINE",
+      "x": 13,
+      "y": 62
     }
   ]
 }

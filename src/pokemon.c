@@ -5785,6 +5785,8 @@ u16 GetBattleBGM(void)
     {
         switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL))
         {
+        case SPECIES_WALKING_WAKE:
+            return MUS_HG_VS_SUICUNE;
         case SPECIES_RAYQUAZA:
             return MUS_VS_RAYQUAZA;
         case SPECIES_KYOGRE:

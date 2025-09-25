@@ -1,1 +1,583 @@
+const SWAMPERT_FLAG_1 = FLAG_TEMP_1
+const SWAMPERT_OBJECT_1 = 2
+
+const SWAMPERT_FLAG_2 = FLAG_TEMP_2
+const SWAMPERT_OBJECT_2 = 3
+
+const SWAMPERT_FLAG_3 = FLAG_TEMP_3
+const SWAMPERT_OBJECT_3 = 4
+
+const SWAMPERT_FLAG_4 = FLAG_TEMP_4
+const SWAMPERT_OBJECT_4 = 5
+
+const SWAMPERT_FLAG_5 = FLAG_TEMP_5
+const SWAMPERT_OBJECT_5 = 8
+
+const SWAMPERT_FLAG_6 = FLAG_TEMP_6
+const SWAMPERT_OBJECT_6 = 9
+
+const SWAMPERT_FLAG_7 = FLAG_TEMP_7;
+const SWAMPERT_OBJECT_7 = 10;
+
+const SWAMPERT_FLAG_8 = FLAG_TEMP_8;
+const SWAMPERT_OBJECT_8 = 11;
+
+const SWAMPERT_FLAG_9 = FLAG_TEMP_9;
+const SWAMPERT_OBJECT_9 = 12;
+
+const SWAMPERT_FLAG_10 = FLAG_TEMP_10;
+const SWAMPERT_OBJECT_10 = 13;
+
+const SWAMPERT_FLAG_11 = FLAG_TEMP_1A;
+const SWAMPERT_OBJECT_11 = 14;
+
+const SWAMPERT_FLAG_12 = FLAG_TEMP_1B;
+const SWAMPERT_OBJECT_12 = 15;
+
+const SWAMPERT_FLAG_13 = FLAG_TEMP_1C;
+const SWAMPERT_OBJECT_13 = 16;
+
 mapscripts MythicIsland_SunkenShrine_MapScripts {}
+
+
+script MythicIsland_SunkenShrine_OmanyteNPC {
+    lock
+    faceplayer
+    playmoncry(SPECIES_OMANYTE, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Underwater scary.\p"
+        "Find air when hear Tidebringer wrath.\p"
+        "Fighting Pokémon anger Tidebringer."
+    ))
+    closemessage
+    release
+}
+script MythicIsland_SunkenShrine_Totem {
+    lock
+    if(!flag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE)) {
+        playse(SE_M_MOONLIGHT)
+        waitse
+        msgbox(format(
+            "> The statue glows with a mysterious aura..."
+        ))
+        setflag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE)
+    }
+    playse(SE_M_HEAL_BELL)
+    waitse
+	special(HealPlayerParty)
+    msgbox(format(
+        "> Being near the statue fills your Pokémon with restoration.\p"
+        "Use the statue to teleport?"
+    ), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES) {
+        goto(MythicIsland_StatueTeleport_SunkenShrine)
+    }
+    else {
+        goto(MythicIsland_SunkenShrine_Totem_End)
+    }
+
+    MythicIsland_StatueTeleport_SunkenShrine:
+        dynmultipush("Cancel", 0)
+        if(flag(FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE)) {
+            dynmultipush("Island Entrance", 1)
+        }
+        dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_NONE)
+        switch (var(VAR_RESULT)) {
+            case 1:
+                closemessage
+                playse(SE_M_PSYBEAM)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
+                waitmovement(0)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
+                fadescreen(FADE_TO_BLACK)
+                warp(MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE, 25, 29)
+            default: 
+                goto(MythicIsland_SunkenShrine_Totem_End)
+        }
+
+    MythicIsland_SunkenShrine_Totem_End:
+        closemessage
+        release
+}
+
+
+script MythicIsland_Jungle_Encounter_Swampert1 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_1)
+            removeobject(SWAMPERT_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_1)
+            removeobject(SWAMPERT_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_1)
+            removeobject(SWAMPERT_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_1)
+            removeobject(SWAMPERT_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert2 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_2)
+            removeobject(SWAMPERT_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_2)
+            removeobject(SWAMPERT_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_2)
+            removeobject(SWAMPERT_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_2)
+            removeobject(SWAMPERT_OBJECT_2)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert3 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_3)
+            removeobject(SWAMPERT_OBJECT_3)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_3)
+            removeobject(SWAMPERT_OBJECT_3)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_3)
+            removeobject(SWAMPERT_OBJECT_3)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_3)
+            removeobject(SWAMPERT_OBJECT_3)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert4 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_4)
+            removeobject(SWAMPERT_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_4)
+            removeobject(SWAMPERT_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_4)
+            removeobject(SWAMPERT_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_4)
+            removeobject(SWAMPERT_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert5 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_5)
+            removeobject(SWAMPERT_OBJECT_5)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_5)
+            removeobject(SWAMPERT_OBJECT_5)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_5)
+            removeobject(SWAMPERT_OBJECT_5)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_5)
+            removeobject(SWAMPERT_OBJECT_5)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert6 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_6)
+            removeobject(SWAMPERT_OBJECT_6)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_6)
+            removeobject(SWAMPERT_OBJECT_6)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_6)
+            removeobject(SWAMPERT_OBJECT_6)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_6)
+            removeobject(SWAMPERT_OBJECT_6)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert7 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_7)
+            removeobject(SWAMPERT_OBJECT_7)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_7)
+            removeobject(SWAMPERT_OBJECT_7)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_7)
+            removeobject(SWAMPERT_OBJECT_7)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_7)
+            removeobject(SWAMPERT_OBJECT_7)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert8 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_8)
+            removeobject(SWAMPERT_OBJECT_8)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_8)
+            removeobject(SWAMPERT_OBJECT_8)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_8)
+            removeobject(SWAMPERT_OBJECT_8)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_8)
+            removeobject(SWAMPERT_OBJECT_8)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert9 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_9)
+            removeobject(SWAMPERT_OBJECT_9)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_9)
+            removeobject(SWAMPERT_OBJECT_9)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_9)
+            removeobject(SWAMPERT_OBJECT_9)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_9)
+            removeobject(SWAMPERT_OBJECT_9)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert10 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_10)
+            removeobject(SWAMPERT_OBJECT_10)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_10)
+            removeobject(SWAMPERT_OBJECT_10)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_10)
+            removeobject(SWAMPERT_OBJECT_10)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_10)
+            removeobject(SWAMPERT_OBJECT_10)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert11 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_11)
+            removeobject(SWAMPERT_OBJECT_11)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_11)
+            removeobject(SWAMPERT_OBJECT_11)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_11)
+            removeobject(SWAMPERT_OBJECT_11)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_11)
+            removeobject(SWAMPERT_OBJECT_11)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert12 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_12)
+            removeobject(SWAMPERT_OBJECT_12)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_12)
+            removeobject(SWAMPERT_OBJECT_12)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_12)
+            removeobject(SWAMPERT_OBJECT_12)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_12)
+            removeobject(SWAMPERT_OBJECT_12)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Swampert13 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
+    playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(SWAMPERT_FLAG_13)
+            removeobject(SWAMPERT_OBJECT_13)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(SWAMPERT_FLAG_13)
+            removeobject(SWAMPERT_OBJECT_13)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SWAMPERT_FLAG_13)
+            removeobject(SWAMPERT_OBJECT_13)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SWAMPERT_FLAG_13)
+            removeobject(SWAMPERT_OBJECT_13)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}

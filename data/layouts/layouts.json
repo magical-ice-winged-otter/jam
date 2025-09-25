@@ -4510,6 +4510,16 @@
       "secondary_tileset": "gTileset_InsideShip",
       "border_filepath": "data/layouts/MythicIsland_PlayerSpawn/border.bin",
       "blockdata_filepath": "data/layouts/MythicIsland_PlayerSpawn/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_WATER_BOSS_ROOM",
+      "name": "MythicIsland_WaterBossRoom_Layout",
+      "width": 15,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/MythicIsland_WaterBossRoom/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_WaterBossRoom/map.bin"
     }
   ]
 }

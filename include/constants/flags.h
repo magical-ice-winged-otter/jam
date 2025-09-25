@@ -1234,14 +1234,14 @@
 #define FLAG_MYTHIC_ISLAND_ITEMFINDER                               0x493
 #define FLAG_MYTHIC_ISLAND_ESCAPE_ROPE                              0x494
 #define FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE                       0x495
-#define FLAG_MYTHIC_ISLAND_RAGING_BOLT_DEFEATED                     0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
-#define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
-#define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
+#define FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED                    0x496
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE               0x497
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_HEART_SCALE                0x498 
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_REVIVAL_HERB               0x499 
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_ENERGY_ROOT                0x49A
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_PEARL_STRING               0x49B
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_LIFE_ORB                   0x49C 
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_PP_MAX                     0x49D
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
 #define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
 #define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag
@@ -1321,9 +1321,9 @@
 #define FLAG_UNUSED_0x4EA                                           0x4EA // Unused Flag
 #define FLAG_UNUSED_0x4EB                                           0x4EB // Unused Flag
 #define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
-#define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
-#define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
-#define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
+#define FLAG_MYTHIC_ISLAND_NO_CATCHING                              0x4ED 
+#define FLAG_MYTHIC_ISLAND_NO_RUNNING                               0x4EE 
+#define FLAG_MYTHIC_ISLAND_WILD_BATTLE_AI                           0x4EF 
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1
