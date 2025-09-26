@@ -4494,10 +4494,10 @@
     {
       "id": "LAYOUT_MYTHIC_ISLAND_DESERT",
       "name": "MythicIsland_Desert_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 80,
+      "height": 80,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/MythicIsland_Desert/border.bin",
       "blockdata_filepath": "data/layouts/MythicIsland_Desert/map.bin"
     },
@@ -4520,6 +4520,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/MythicIsland_WaterBossRoom/border.bin",
       "blockdata_filepath": "data/layouts/MythicIsland_WaterBossRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_BADLANDS",
+      "name": "MythicIsland_Badlands_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/MythicIsland_Badlands/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_Badlands/map.bin"
     }
   ]
 }

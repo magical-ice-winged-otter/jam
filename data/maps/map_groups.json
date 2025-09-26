@@ -633,6 +633,7 @@
     "MythicIsland_Tropics",
     "MythicIsland_Desert",
     "MythicIsland_PlayerSpawn",
-    "MythicIsland_WaterBossRoom"
+    "MythicIsland_WaterBossRoom",
+    "MythicIsland_Badlands"
   ]
 }

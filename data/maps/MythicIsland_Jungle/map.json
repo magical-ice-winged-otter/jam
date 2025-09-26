@@ -17,6 +17,11 @@
       "map": "MAP_MYTHIC_ISLAND_LAKE",
       "offset": 18,
       "direction": "up"
+    },
+    {
+      "map": "MAP_MYTHIC_ISLAND_DESERT",
+      "offset": -10,
+      "direction": "right"
     }
   ],
   "object_events": [
