@@ -18,132 +18,161 @@ MythicIsland_SunkenShrine_OmanyteNPC::
 	return
 
 
-MythicIsland_SunkenShrine_Totem::
-# 56 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	lock
+MythicIsland_SunkenShrine_Chimecho::
 # 57 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	goto_if_unset FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE, MythicIsland_SunkenShrine_Totem_2
-MythicIsland_SunkenShrine_Totem_1:
-# 65 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playse SE_M_HEAL_BELL
-# 66 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitse
+	lock
+# 58 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	faceplayer
+# 59 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	goto_if_unset FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO, MythicIsland_SunkenShrine_Chimecho_2
+MythicIsland_SunkenShrine_Chimecho_1:
 # 67 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	special HealPlayerParty
+	playse SE_M_HEAL_BELL
 # 68 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	msgbox MythicIsland_SunkenShrine_Totem_Text_1, MSGBOX_YESNO
-# 72 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitse
+# 69 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	special HealPlayerParty
+# 70 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	msgbox MythicIsland_SunkenShrine_Chimecho_Text_1, MSGBOX_YESNO
+# 74 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	compare VAR_RESULT, YES
-	goto_if_eq MythicIsland_SunkenShrine_Totem_5
-# 76 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	goto MythicIsland_SunkenShrine_Totem_End
-MythicIsland_SunkenShrine_Totem_4:
-# 79 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-MythicIsland_StatueTeleport_SunkenShrine:
-# 80 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dynmultipush MythicIsland_SunkenShrine_Totem_Text_2, 0
+	goto_if_eq MythicIsland_SunkenShrine_Chimecho_5
+# 78 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	goto MythicIsland_SunkenShrine_Chimecho_End
+MythicIsland_SunkenShrine_Chimecho_4:
 # 81 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	goto_if_set FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE, MythicIsland_SunkenShrine_Totem_9
-MythicIsland_SunkenShrine_Totem_8:
+MythicIsland_SunkenShrine_ChimechoTeleport:
+# 82 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dynmultipush MythicIsland_SunkenShrine_Chimecho_Text_2, 0
 # 84 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	goto_if_set FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO, MythicIsland_SunkenShrine_Chimecho_9
+MythicIsland_SunkenShrine_Chimecho_8:
+# 88 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	goto_if_set FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO, MythicIsland_SunkenShrine_Chimecho_12
+MythicIsland_SunkenShrine_Chimecho_11:
+# 93 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	dynmultistack 0, 0, TRUE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
-# 85 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 86 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case 1, MythicIsland_SunkenShrine_Totem_13
 # 95 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	goto MythicIsland_SunkenShrine_Totem_End
-MythicIsland_SunkenShrine_Totem_11:
-# 98 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-MythicIsland_SunkenShrine_Totem_End:
-# 99 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 96 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case 1, MythicIsland_SunkenShrine_Chimecho_16
+# 104 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case 2, MythicIsland_SunkenShrine_Chimecho_17
+# 113 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	goto MythicIsland_SunkenShrine_Chimecho_End
+MythicIsland_SunkenShrine_Chimecho_14:
+# 116 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+MythicIsland_SunkenShrine_Chimecho_End:
+# 117 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	closemessage
-# 100 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 118 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
-MythicIsland_SunkenShrine_Totem_2:
-# 58 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playse SE_M_MOONLIGHT
-# 59 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitse
+MythicIsland_SunkenShrine_Chimecho_2:
 # 60 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	msgbox MythicIsland_SunkenShrine_Totem_Text_0
-# 63 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE
-	goto MythicIsland_SunkenShrine_Totem_1
+	playmoncry SPECIES_CHIMECHO, CRY_MODE_NORMAL
+# 61 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
+# 62 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	msgbox MythicIsland_SunkenShrine_Chimecho_Text_0
+# 65 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO
+	goto MythicIsland_SunkenShrine_Chimecho_1
 
-MythicIsland_SunkenShrine_Totem_5:
-# 73 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	goto MythicIsland_StatueTeleport_SunkenShrine
-	goto MythicIsland_SunkenShrine_Totem_4
+MythicIsland_SunkenShrine_Chimecho_5:
+# 75 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	goto MythicIsland_SunkenShrine_ChimechoTeleport
+	goto MythicIsland_SunkenShrine_Chimecho_4
 
-MythicIsland_SunkenShrine_Totem_9:
-# 82 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dynmultipush MythicIsland_SunkenShrine_Totem_Text_3, 1
-	goto MythicIsland_SunkenShrine_Totem_8
+MythicIsland_SunkenShrine_Chimecho_9:
+# 85 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dynmultipush MythicIsland_SunkenShrine_Chimecho_Text_3, 1
+	goto MythicIsland_SunkenShrine_Chimecho_8
 
-MythicIsland_SunkenShrine_Totem_13:
-# 87 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	closemessage
-# 88 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playse SE_M_PSYBEAM
+MythicIsland_SunkenShrine_Chimecho_12:
 # 89 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dynmultipush MythicIsland_SunkenShrine_Chimecho_Text_4, 2
+	goto MythicIsland_SunkenShrine_Chimecho_11
+
+MythicIsland_SunkenShrine_Chimecho_16:
+# 97 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	closemessage
+# 98 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playse SE_M_PSYBEAM
+# 99 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, teleportSpin
-# 90 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 100 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	waitmovement 0
-# 91 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 101 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, teleportFly
-# 92 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 93 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 102 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmovement 0
+# 103 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	warp MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE, 25, 29
-	goto MythicIsland_SunkenShrine_Totem_11
+	goto MythicIsland_SunkenShrine_Chimecho_14
+
+MythicIsland_SunkenShrine_Chimecho_17:
+# 105 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	closemessage
+# 106 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playse SE_M_PSYBEAM
+# 107 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, teleportSpin
+# 108 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmovement 0
+# 109 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, teleportFly
+# 110 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmovement 0
+# 111 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	warp MAP_MYTHIC_ISLAND_LAKE, 10, 32
+	goto MythicIsland_SunkenShrine_Chimecho_14
 
 
 MythicIsland_Jungle_Encounter_Swampert1::
-# 105 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 123 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 106 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 124 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 107 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 108 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 109 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 110 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 111 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 112 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 113 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 114 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 115 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 116 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 118 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 119 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert1_3
-# 121 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert1_4
 # 125 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert1_5
+	setflag B_FLAG_NO_RUNNING
+# 126 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 127 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 128 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 129 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert1_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 130 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 131 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 132 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 133 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 134 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_1
-# 135 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 2
+	specialvar VAR_RESULT, GetBattleOutcome
 # 136 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 137 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert1_3
+# 139 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert1_4
+# 143 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert1_5
+# 147 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert1_6
+# 152 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_1
+# 153 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 2
+# 154 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert1_1:
-# 138 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 156 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -151,76 +180,76 @@ MythicIsland_Jungle_Encounter_Swampert1_3:
 	goto MythicIsland_Jungle_Encounter_Swampert1_1
 
 MythicIsland_Jungle_Encounter_Swampert1_4:
-# 122 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 140 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1
-# 123 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 141 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 2
-# 124 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 142 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert1_1
 
 MythicIsland_Jungle_Encounter_Swampert1_5:
-# 126 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 144 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1
-# 127 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 145 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 2
-# 128 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 146 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert1_1
 
 MythicIsland_Jungle_Encounter_Swampert1_6:
-# 130 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 148 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1
-# 131 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 149 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 2
-# 132 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 150 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert1_1
 
 
 MythicIsland_Jungle_Encounter_Swampert2::
-# 142 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 160 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 143 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 161 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 144 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 145 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 146 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 147 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 148 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 149 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 150 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 151 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 152 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 153 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 155 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 156 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert2_3
-# 158 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert2_4
 # 162 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert2_5
+	setflag B_FLAG_NO_RUNNING
+# 163 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 164 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 165 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 166 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert2_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 167 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 168 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 169 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 170 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 171 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_2
-# 172 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 3
+	specialvar VAR_RESULT, GetBattleOutcome
 # 173 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 174 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert2_3
+# 176 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert2_4
+# 180 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert2_5
+# 184 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert2_6
+# 189 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_2
+# 190 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 3
+# 191 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert2_1:
-# 175 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 193 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -228,76 +257,76 @@ MythicIsland_Jungle_Encounter_Swampert2_3:
 	goto MythicIsland_Jungle_Encounter_Swampert2_1
 
 MythicIsland_Jungle_Encounter_Swampert2_4:
-# 159 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 177 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_2
-# 160 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 178 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 3
-# 161 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 179 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert2_1
 
 MythicIsland_Jungle_Encounter_Swampert2_5:
-# 163 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 181 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_2
-# 164 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 182 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 3
-# 165 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 183 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert2_1
 
 MythicIsland_Jungle_Encounter_Swampert2_6:
-# 167 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 185 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_2
-# 168 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 186 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 3
-# 169 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 187 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert2_1
 
 
 MythicIsland_Jungle_Encounter_Swampert3::
-# 179 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 197 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 180 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 198 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 181 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 182 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 183 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 184 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 185 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 186 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 187 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 188 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 189 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 190 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 192 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 193 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert3_3
-# 195 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert3_4
 # 199 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert3_5
+	setflag B_FLAG_NO_RUNNING
+# 200 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 201 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 202 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 203 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert3_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 204 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 205 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 206 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 207 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 208 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_3
-# 209 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 4
+	specialvar VAR_RESULT, GetBattleOutcome
 # 210 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 211 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert3_3
+# 213 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert3_4
+# 217 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert3_5
+# 221 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert3_6
+# 226 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_3
+# 227 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 4
+# 228 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert3_1:
-# 212 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 230 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -305,76 +334,76 @@ MythicIsland_Jungle_Encounter_Swampert3_3:
 	goto MythicIsland_Jungle_Encounter_Swampert3_1
 
 MythicIsland_Jungle_Encounter_Swampert3_4:
-# 196 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 214 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_3
-# 197 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 215 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 4
-# 198 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 216 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert3_1
 
 MythicIsland_Jungle_Encounter_Swampert3_5:
-# 200 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 218 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_3
-# 201 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 219 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 4
-# 202 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 220 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert3_1
 
 MythicIsland_Jungle_Encounter_Swampert3_6:
-# 204 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 222 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_3
-# 205 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 223 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 4
-# 206 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 224 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert3_1
 
 
 MythicIsland_Jungle_Encounter_Swampert4::
-# 216 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 234 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 217 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 235 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 218 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 219 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 220 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 221 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 222 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 223 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 224 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 225 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 226 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 227 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 229 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 230 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert4_3
-# 232 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert4_4
 # 236 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert4_5
+	setflag B_FLAG_NO_RUNNING
+# 237 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 238 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 239 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 240 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert4_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 241 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 242 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 243 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 244 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 245 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_4
-# 246 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 5
+	specialvar VAR_RESULT, GetBattleOutcome
 # 247 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 248 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert4_3
+# 250 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert4_4
+# 254 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert4_5
+# 258 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert4_6
+# 263 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_4
+# 264 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 5
+# 265 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert4_1:
-# 249 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 267 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -382,76 +411,76 @@ MythicIsland_Jungle_Encounter_Swampert4_3:
 	goto MythicIsland_Jungle_Encounter_Swampert4_1
 
 MythicIsland_Jungle_Encounter_Swampert4_4:
-# 233 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 251 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_4
-# 234 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 252 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 5
-# 235 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 253 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert4_1
 
 MythicIsland_Jungle_Encounter_Swampert4_5:
-# 237 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 255 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_4
-# 238 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 256 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 5
-# 239 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 257 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert4_1
 
 MythicIsland_Jungle_Encounter_Swampert4_6:
-# 241 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 259 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_4
-# 242 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 260 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 5
-# 243 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 261 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert4_1
 
 
 MythicIsland_Jungle_Encounter_Swampert5::
-# 253 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 271 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 254 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 272 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 255 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 256 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 257 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 258 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 259 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 260 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 261 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 262 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 263 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 264 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 266 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 267 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert5_3
-# 269 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert5_4
 # 273 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert5_5
+	setflag B_FLAG_NO_RUNNING
+# 274 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 275 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 276 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 277 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert5_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 278 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 279 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 280 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 281 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 282 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_5
-# 283 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 8
+	specialvar VAR_RESULT, GetBattleOutcome
 # 284 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 285 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert5_3
+# 287 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert5_4
+# 291 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert5_5
+# 295 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert5_6
+# 300 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_5
+# 301 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 8
+# 302 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert5_1:
-# 286 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 304 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -459,76 +488,76 @@ MythicIsland_Jungle_Encounter_Swampert5_3:
 	goto MythicIsland_Jungle_Encounter_Swampert5_1
 
 MythicIsland_Jungle_Encounter_Swampert5_4:
-# 270 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 288 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_5
-# 271 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 289 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 8
-# 272 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 290 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert5_1
 
 MythicIsland_Jungle_Encounter_Swampert5_5:
-# 274 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 292 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_5
-# 275 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 293 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 8
-# 276 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 294 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert5_1
 
 MythicIsland_Jungle_Encounter_Swampert5_6:
-# 278 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 296 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_5
-# 279 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 297 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 8
-# 280 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 298 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert5_1
 
 
 MythicIsland_Jungle_Encounter_Swampert6::
-# 290 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 308 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 291 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 309 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 292 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 293 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 294 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 295 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 296 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 297 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 298 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 299 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 300 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 301 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 303 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 304 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert6_3
-# 306 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert6_4
 # 310 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert6_5
+	setflag B_FLAG_NO_RUNNING
+# 311 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 312 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 313 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 314 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert6_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 315 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 316 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 317 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 318 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 319 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_6
-# 320 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 9
+	specialvar VAR_RESULT, GetBattleOutcome
 # 321 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 322 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert6_3
+# 324 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert6_4
+# 328 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert6_5
+# 332 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert6_6
+# 337 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_6
+# 338 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 9
+# 339 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert6_1:
-# 323 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 341 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -536,76 +565,76 @@ MythicIsland_Jungle_Encounter_Swampert6_3:
 	goto MythicIsland_Jungle_Encounter_Swampert6_1
 
 MythicIsland_Jungle_Encounter_Swampert6_4:
-# 307 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 325 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_6
-# 308 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 326 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 9
-# 309 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 327 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert6_1
 
 MythicIsland_Jungle_Encounter_Swampert6_5:
-# 311 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 329 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_6
-# 312 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 330 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 9
-# 313 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 331 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert6_1
 
 MythicIsland_Jungle_Encounter_Swampert6_6:
-# 315 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 333 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_6
-# 316 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 334 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 9
-# 317 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 335 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert6_1
 
 
 MythicIsland_Jungle_Encounter_Swampert7::
-# 327 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 345 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 328 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 346 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 329 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 330 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 331 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 332 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 333 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 334 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 335 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 336 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 337 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 338 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 340 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 341 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert7_3
-# 343 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert7_4
 # 347 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert7_5
+	setflag B_FLAG_NO_RUNNING
+# 348 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 349 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 350 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 351 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert7_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 352 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 353 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 354 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 355 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 356 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_7 ;
-# 357 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 10 ;
+	specialvar VAR_RESULT, GetBattleOutcome
 # 358 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 359 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert7_3
+# 361 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert7_4
+# 365 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert7_5
+# 369 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert7_6
+# 374 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_7 ;
+# 375 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 10 ;
+# 376 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert7_1:
-# 360 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 378 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -613,76 +642,76 @@ MythicIsland_Jungle_Encounter_Swampert7_3:
 	goto MythicIsland_Jungle_Encounter_Swampert7_1
 
 MythicIsland_Jungle_Encounter_Swampert7_4:
-# 344 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 362 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_7 ;
-# 345 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 363 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 10 ;
-# 346 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 364 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert7_1
 
 MythicIsland_Jungle_Encounter_Swampert7_5:
-# 348 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 366 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_7 ;
-# 349 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 367 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 10 ;
-# 350 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 368 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert7_1
 
 MythicIsland_Jungle_Encounter_Swampert7_6:
-# 352 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 370 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_7 ;
-# 353 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 371 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 10 ;
-# 354 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 372 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert7_1
 
 
 MythicIsland_Jungle_Encounter_Swampert8::
-# 364 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 382 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 365 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 383 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 366 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 367 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 368 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 369 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 370 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 371 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 372 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 373 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 374 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 375 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 377 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 378 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert8_3
-# 380 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert8_4
 # 384 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert8_5
+	setflag B_FLAG_NO_RUNNING
+# 385 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 386 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 387 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 388 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert8_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 389 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 390 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 391 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 392 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 393 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_8 ;
-# 394 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 11 ;
+	specialvar VAR_RESULT, GetBattleOutcome
 # 395 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 396 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert8_3
+# 398 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert8_4
+# 402 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert8_5
+# 406 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert8_6
+# 411 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_8 ;
+# 412 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 11 ;
+# 413 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert8_1:
-# 397 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 415 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -690,76 +719,76 @@ MythicIsland_Jungle_Encounter_Swampert8_3:
 	goto MythicIsland_Jungle_Encounter_Swampert8_1
 
 MythicIsland_Jungle_Encounter_Swampert8_4:
-# 381 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 399 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_8 ;
-# 382 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 400 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 11 ;
-# 383 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 401 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert8_1
 
 MythicIsland_Jungle_Encounter_Swampert8_5:
-# 385 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 403 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_8 ;
-# 386 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 404 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 11 ;
-# 387 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 405 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert8_1
 
 MythicIsland_Jungle_Encounter_Swampert8_6:
-# 389 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 407 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_8 ;
-# 390 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 408 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 11 ;
-# 391 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 409 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert8_1
 
 
 MythicIsland_Jungle_Encounter_Swampert9::
-# 401 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 419 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 402 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 420 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 403 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 404 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 405 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 406 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 407 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 408 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 409 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 410 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 411 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 412 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 414 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 415 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert9_3
-# 417 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert9_4
 # 421 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert9_5
+	setflag B_FLAG_NO_RUNNING
+# 422 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 423 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 424 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 425 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert9_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 426 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 427 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 428 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 429 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 430 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_9 ;
-# 431 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 12 ;
+	specialvar VAR_RESULT, GetBattleOutcome
 # 432 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 433 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert9_3
+# 435 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert9_4
+# 439 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert9_5
+# 443 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert9_6
+# 448 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_9 ;
+# 449 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 12 ;
+# 450 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert9_1:
-# 434 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 452 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -767,76 +796,76 @@ MythicIsland_Jungle_Encounter_Swampert9_3:
 	goto MythicIsland_Jungle_Encounter_Swampert9_1
 
 MythicIsland_Jungle_Encounter_Swampert9_4:
-# 418 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 436 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_9 ;
-# 419 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 437 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 12 ;
-# 420 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 438 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert9_1
 
 MythicIsland_Jungle_Encounter_Swampert9_5:
-# 422 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 440 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_9 ;
-# 423 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 441 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 12 ;
-# 424 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 442 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert9_1
 
 MythicIsland_Jungle_Encounter_Swampert9_6:
-# 426 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 444 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_9 ;
-# 427 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 445 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 12 ;
-# 428 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 446 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert9_1
 
 
 MythicIsland_Jungle_Encounter_Swampert10::
-# 438 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 456 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 439 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 457 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 440 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 441 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 442 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 443 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 444 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 445 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 446 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 447 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 448 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 449 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 451 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 452 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert10_3
-# 454 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert10_4
 # 458 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert10_5
+	setflag B_FLAG_NO_RUNNING
+# 459 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 460 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 461 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 462 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert10_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 463 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 464 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 465 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 466 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 467 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_10 ;
-# 468 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 13 ;
+	specialvar VAR_RESULT, GetBattleOutcome
 # 469 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 470 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert10_3
+# 472 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert10_4
+# 476 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert10_5
+# 480 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert10_6
+# 485 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_10 ;
+# 486 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 13 ;
+# 487 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert10_1:
-# 471 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 489 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -844,76 +873,76 @@ MythicIsland_Jungle_Encounter_Swampert10_3:
 	goto MythicIsland_Jungle_Encounter_Swampert10_1
 
 MythicIsland_Jungle_Encounter_Swampert10_4:
-# 455 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 473 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_10 ;
-# 456 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 474 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 13 ;
-# 457 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 475 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert10_1
 
 MythicIsland_Jungle_Encounter_Swampert10_5:
-# 459 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 477 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_10 ;
-# 460 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 478 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 13 ;
-# 461 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 479 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert10_1
 
 MythicIsland_Jungle_Encounter_Swampert10_6:
-# 463 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 481 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_10 ;
-# 464 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 482 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 13 ;
-# 465 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 483 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert10_1
 
 
 MythicIsland_Jungle_Encounter_Swampert11::
-# 475 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 493 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 476 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 494 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 477 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 478 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 479 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 480 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 481 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 482 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 483 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 484 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 485 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 486 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 488 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 489 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert11_3
-# 491 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert11_4
 # 495 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert11_5
+	setflag B_FLAG_NO_RUNNING
+# 496 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 497 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 498 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 499 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert11_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 500 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 501 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 502 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 503 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 504 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_1A ;
-# 505 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 14 ;
+	specialvar VAR_RESULT, GetBattleOutcome
 # 506 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 507 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert11_3
+# 509 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert11_4
+# 513 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert11_5
+# 517 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert11_6
+# 522 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_1A ;
+# 523 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 14 ;
+# 524 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert11_1:
-# 508 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 526 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -921,76 +950,76 @@ MythicIsland_Jungle_Encounter_Swampert11_3:
 	goto MythicIsland_Jungle_Encounter_Swampert11_1
 
 MythicIsland_Jungle_Encounter_Swampert11_4:
-# 492 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 510 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1A ;
-# 493 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 511 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 14 ;
-# 494 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 512 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert11_1
 
 MythicIsland_Jungle_Encounter_Swampert11_5:
-# 496 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 514 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1A ;
-# 497 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 515 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 14 ;
-# 498 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 516 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert11_1
 
 MythicIsland_Jungle_Encounter_Swampert11_6:
-# 500 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 518 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1A ;
-# 501 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 519 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 14 ;
-# 502 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 520 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert11_1
 
 
 MythicIsland_Jungle_Encounter_Swampert12::
-# 512 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 530 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 513 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 531 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 514 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 515 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 516 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 517 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 518 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 519 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 520 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 521 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 522 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 523 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 525 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 526 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert12_3
-# 528 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert12_4
 # 532 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert12_5
+	setflag B_FLAG_NO_RUNNING
+# 533 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 534 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 535 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 536 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert12_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 537 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 538 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 539 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 540 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 541 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_1B ;
-# 542 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 15 ;
+	specialvar VAR_RESULT, GetBattleOutcome
 # 543 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 544 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert12_3
+# 546 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert12_4
+# 550 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert12_5
+# 554 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert12_6
+# 559 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_1B ;
+# 560 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 15 ;
+# 561 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert12_1:
-# 545 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 563 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -998,76 +1027,76 @@ MythicIsland_Jungle_Encounter_Swampert12_3:
 	goto MythicIsland_Jungle_Encounter_Swampert12_1
 
 MythicIsland_Jungle_Encounter_Swampert12_4:
-# 529 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 547 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1B ;
-# 530 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 548 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 15 ;
-# 531 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 549 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert12_1
 
 MythicIsland_Jungle_Encounter_Swampert12_5:
-# 533 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 551 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1B ;
-# 534 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 552 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 15 ;
-# 535 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 553 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert12_1
 
 MythicIsland_Jungle_Encounter_Swampert12_6:
-# 537 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 555 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1B ;
-# 538 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 556 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 15 ;
-# 539 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 557 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert12_1
 
 
 MythicIsland_Jungle_Encounter_Swampert13::
-# 549 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 567 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_SMART_WILD_AI_FLAG
-# 550 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 568 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
-# 551 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
-# 552 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
-# 553 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
-# 554 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	waitmoncry
-# 555 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
-# 556 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	dowildbattle
-# 557 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
-# 558 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
-# 559 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
-# 560 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
-# 562 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	switch VAR_RESULT
-# 563 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert13_3
-# 565 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert13_4
 # 569 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert13_5
+	setflag B_FLAG_NO_RUNNING
+# 570 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER
+# 571 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	playmoncry SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER
+# 572 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	waitmoncry
 # 573 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert13_6
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 574 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	dowildbattle
+# 575 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_SMART_WILD_AI_FLAG
+# 576 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 577 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 578 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	setflag FLAG_TEMP_1C ;
-# 579 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	removeobject 16 ;
+	specialvar VAR_RESULT, GetBattleOutcome
 # 580 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	switch VAR_RESULT
+# 581 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_Jungle_Encounter_Swampert13_3
+# 583 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_Jungle_Encounter_Swampert13_4
+# 587 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_Jungle_Encounter_Swampert13_5
+# 591 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	case B_OUTCOME_CAUGHT, MythicIsland_Jungle_Encounter_Swampert13_6
+# 596 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	setflag FLAG_TEMP_1C ;
+# 597 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	removeobject 16 ;
+# 598 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Jungle_Encounter_Swampert13_1:
-# 582 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 600 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	release
 	return
 
@@ -1075,29 +1104,29 @@ MythicIsland_Jungle_Encounter_Swampert13_3:
 	goto MythicIsland_Jungle_Encounter_Swampert13_1
 
 MythicIsland_Jungle_Encounter_Swampert13_4:
-# 566 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 584 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1C ;
-# 567 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 585 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 16 ;
-# 568 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 586 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert13_1
 
 MythicIsland_Jungle_Encounter_Swampert13_5:
-# 570 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 588 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1C ;
-# 571 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 589 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 16 ;
-# 572 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 590 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert13_1
 
 MythicIsland_Jungle_Encounter_Swampert13_6:
-# 574 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 592 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	setflag FLAG_TEMP_1C ;
-# 575 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 593 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	removeobject 16 ;
-# 576 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+# 594 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Jungle_Encounter_Swampert13_1
 
@@ -1108,21 +1137,25 @@ MythicIsland_SunkenShrine_OmanyteNPC_Text_0:
 	.string "Find air when hear Tidebringer wrath.\p"
 	.string "Fighting Pokémon anger Tidebringer.$"
 
-MythicIsland_SunkenShrine_Totem_Text_0:
-# 61 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	.string "> The statue glows with a mysterious\n"
-	.string "aura...$"
+MythicIsland_SunkenShrine_Chimecho_Text_0:
+# 63 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	.string "Chime...$"
 
-MythicIsland_SunkenShrine_Totem_Text_1:
-# 69 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
-	.string "> Being near the statue fills your\n"
-	.string "Pokémon with restoration.\p"
-	.string "Use the statue to teleport?$"
+MythicIsland_SunkenShrine_Chimecho_Text_1:
+# 71 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	.string "> The soothing chime fills your Pokémon\n"
+	.string "with restoration.\p"
+	.string "Would you like Chimecho to teleport\n"
+	.string "you?$"
 
-MythicIsland_SunkenShrine_Totem_Text_2:
-# 80 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+MythicIsland_SunkenShrine_Chimecho_Text_2:
+# 82 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	.string "Cancel$"
 
-MythicIsland_SunkenShrine_Totem_Text_3:
-# 82 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+MythicIsland_SunkenShrine_Chimecho_Text_3:
+# 85 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
 	.string "Island Entrance$"
+
+MythicIsland_SunkenShrine_Chimecho_Text_4:
+# 89 "data/maps/MythicIsland_SunkenShrine/scripts.pory"
+	.string "Lake$"

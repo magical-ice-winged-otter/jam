@@ -1182,3 +1182,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MythicIsland_WaterBossRoom/scripts.inc"
 
 	.include "data/maps/MythicIsland_Badlands/scripts.inc"
+
+	.include "data/maps/MythicIsland_LakeShop/scripts.inc"

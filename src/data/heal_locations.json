@@ -194,6 +194,12 @@
       "y": 29
     },
     {
+      "id": "HEAL_LOCATION_MYTHIC_ISLAND_LAKE",
+      "map": "MAP_MYTHIC_ISLAND_LAKE",
+      "x": 10,
+      "y": 32
+    },
+    {
       "id": "HEAL_LOCATION_MYTHIC_ISLAND_SUNKEN_SHRINE",
       "map": "MAP_MYTHIC_ISLAND_SUNKEN_SHRINE",
       "x": 13,

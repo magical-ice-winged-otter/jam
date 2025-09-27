@@ -181,7 +181,7 @@ script MythicIsland_WaterBossRoom_ApproachBossRight {
     ), MSGBOX_YESNO)
     if (var(VAR_RESULT) == YES) {
         closemessage
-        applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_Left)
+        applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft)
         waitmovement(0)
         applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
         waitmovement(0)
@@ -250,7 +250,7 @@ script MythicIsland_WaterBossRoom_ApproachBossFarRight {
         setflag(B_SMART_WILD_AI_FLAG)
         setflag(B_FLAG_NO_CATCHING)
         setflag(B_FLAG_NO_RUNNING)
-        createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH)
+        createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LUM_BERRY, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH)
         setwilddoubleflag
         setflag(FLAG_SYS_CTRL_OBJ_DELETE)
         dowildbattle

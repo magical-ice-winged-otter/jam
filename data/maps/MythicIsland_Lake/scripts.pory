@@ -1,1 +1,115 @@
+const RAPIDASH_OBJECT = 4
+const RAPIDASH_FLAG = FLAG_TEMP_2
+
+
 mapscripts MythicIsland_Lake_MapScripts {}
+
+
+script MythicIsland_Lake_TreeEntrance {
+    lock
+    msgbox(format(
+        "There seems to be an opening in this tree. Enter?"
+    ), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == YES) {
+        warp(MAP_MYTHIC_ISLAND_LAKE_SHOP, 5, 7)
+    }
+    closemessage
+    release
+}
+
+
+script MythicIsland_Lake_Totem {
+    lock
+    faceplayer
+    if(!flag(FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO)) {
+        playmoncry(SPECIES_CHIMECHO, CRY_MODE_NORMAL)
+        waitmoncry
+        msgbox(format(
+            "Chime..."
+        ))
+        setflag(FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO)
+    }
+    playse(SE_M_HEAL_BELL)
+    waitse
+	special(HealPlayerParty)
+    msgbox(format(
+        "> The soothing chime fills your Pokémon with restoration.\p"
+        "Would you like Chimecho to teleport you?"
+    ), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES) {
+        goto(MythicIsland_Lake_ChimechoTeleport)
+    }
+    else {
+        goto(MythicIsland_Lake_Chimecho_End)
+    }
+
+    MythicIsland_Lake_ChimechoTeleport:
+        dynmultipush("Cancel", 0)
+
+        if(flag(FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO)) {
+            dynmultipush("Island Entrance", 2)
+        }
+
+        if(flag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_CHIMECHO)) {
+            dynmultipush("Flooded Tunnels", 1)
+        }
+        dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_NONE)
+
+        switch (var(VAR_RESULT)) {
+            case 1:
+                closemessage
+                playse(SE_M_PSYBEAM)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
+                waitmovement(0)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
+                waitmovement(0)
+                warp(MAP_MYTHIC_ISLAND_SUNKEN_SHRINE, 13, 62)
+            case 2:
+                closemessage
+                playse(SE_M_PSYBEAM)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
+                waitmovement(0)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
+                waitmovement(0)
+                warp(MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE, 25, 29)
+            default: 
+                goto(MythicIsland_Lake_Chimecho_End)
+        }
+
+    MythicIsland_Lake_Chimecho_End:
+        closemessage
+        release
+}
+
+script MythicIsland_Lake_Rapidash {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_RAPIDASH_GALAR, 40, ITEM_CUSTAP_BERRY, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_PSYCHO_CUT, MOVE_DAZZLING_GLEAM, MOVE_MEGAHORN, MOVE_MORNING_SUN)
+    playmoncry(SPECIES_RAPIDASH_GALAR, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            break
+        case B_OUTCOME_WON:
+            setflag(RAPIDASH_FLAG)
+            removeobject(RAPIDASH_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(RAPIDASH_FLAG)
+            removeobject(RAPIDASH_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(RAPIDASH_FLAG)
+            removeobject(RAPIDASH_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}

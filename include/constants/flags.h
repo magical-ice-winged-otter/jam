@@ -668,7 +668,7 @@
 #define FLAG_MYTHICISLAND_ENTRANCE_EnergyPowder  0x266
 #define FLAG_MYTHICISLAND_JUNGLE_BigMushroom  0x267
 #define FLAG_MYTHICISLAND_JUNGLE_LumBerry  0x268
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
+#define FLAG_MYTHICISLAND_LAKE_LeppaBerry  0x269
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
@@ -1233,19 +1233,19 @@
 // island-game flags
 #define FLAG_MYTHIC_ISLAND_ITEMFINDER                               0x493
 #define FLAG_MYTHIC_ISLAND_ESCAPE_ROPE                              0x494
-#define FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE                       0x495
+#define FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO                           0x495
 #define FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED                    0x496
-#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE               0x497
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_CHIMECHO                   0x497
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_HEART_SCALE                0x498 
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_REVIVAL_HERB               0x499 
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_ENERGY_ROOT                0x49A
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_PEARL_STRING               0x49B
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_LIFE_ORB                   0x49C 
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_PP_MAX                     0x49D
-#define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
-#define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
-#define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag
-#define FLAG_UNUSED_0x4A1                                           0x4A1 // Unused Flag
+#define FLAG_MYTHIC_ISLAND_LAKE_ULTRA_BALL                          0x49E 
+#define FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO                            0x49F
+#define FLAG_MYTHIC_ISLAND_LAKE_GYARADOS                            0x4A0
+#define FLAG_MYTHIC_ISLAND_LAKE_DHELMISE                            0x4A1
 #define FLAG_UNUSED_0x4A2                                           0x4A2 // Unused Flag
 #define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
 #define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag

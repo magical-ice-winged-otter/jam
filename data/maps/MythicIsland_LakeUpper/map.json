@@ -2,15 +2,15 @@
   "id": "MAP_MYTHIC_ISLAND_LAKE_UPPER",
   "name": "MythicIsland_LakeUpper",
   "layout": "LAYOUT_MYTHIC_ISLAND_LAKE_UPPER",
-  "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "music": "MUS_DP_LAKE",
+  "region_map_section": "MAPSEC_ISLANDGAME",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "weather": "WEATHER_SUNNY_CLOUDS",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
-  "show_map_name": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -25,13 +25,13 @@
       "x": 10,
       "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "MythicIsland_LakeUpper_GyaradosMega",
+      "flag": "FLAG_MYTHIC_ISLAND_LAKE_GYARADOS"
     }
   ],
   "warp_events": [],

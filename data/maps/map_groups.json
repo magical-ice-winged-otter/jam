@@ -634,6 +634,7 @@
     "MythicIsland_Desert",
     "MythicIsland_PlayerSpawn",
     "MythicIsland_WaterBossRoom",
-    "MythicIsland_Badlands"
+    "MythicIsland_Badlands",
+    "MythicIsland_LakeShop"
   ]
 }

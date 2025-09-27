@@ -308,7 +308,7 @@ MythicIsland_WaterBossRoom_ApproachBossRight_1:
 # 183 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	closemessage
 # 184 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Left
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 # 185 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 # 186 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
@@ -424,7 +424,7 @@ MythicIsland_WaterBossRoom_ApproachBossFarRight_1:
 # 252 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setflag B_FLAG_NO_RUNNING
 # 253 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LUM_BERRY, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
 # 254 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setwilddoubleflag
 # 255 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"

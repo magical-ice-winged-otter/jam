@@ -1,1 +1,34 @@
+const DHELMISE_OBJECT = 1
+
 mapscripts MythicIsland_LakeUnderwater_MapScripts {}
+
+
+script MythicIsland_LakeUnderwater_Dhelmise {
+    lock
+    playmoncry(SPECIES_DHELMISE, CRY_MODE_NORMAL)
+    waitmoncry
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_DHELMISE, 45, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_GYRO_BALL, MOVE_PHANTOM_FORCE, MOVE_GIGA_DRAIN, MOVE_WHIRLPOOL)
+    setwilddoubleflag
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+        case B_OUTCOME_WON:
+        case B_OUTCOME_CAUGHT:
+        default:
+            setflag(FLAG_MYTHIC_ISLAND_LAKE_DHELMISE)
+            removeobject(DHELMISE_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    
+}

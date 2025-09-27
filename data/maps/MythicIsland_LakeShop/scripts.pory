@@ -1,0 +1,245 @@
+mapscripts MythicIsland_LakeShop_MapScripts {}
+
+script MythicIsland_IslandEntrance_KecleonMerchant {
+    lock
+    faceplayer
+    playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Have goods. Want mushrooms. Have trade?"
+    ), MSGBOX_YESNO)
+
+    if (var(VAR_RESULT) == YES) {
+        goto(MythicIsland_KecleonShop)
+    }
+    else {
+        goto(MythicIsland_KecleonShopEnd)
+    }
+
+    MythicIsland_KecleonShop:
+        msgbox(format(
+            "What want?"
+        ))
+        dynmultipush("I'm good", 0)
+        dynmultipush("Pokéball", 1)
+        dynmultipush("Great Ball", 2)
+        dynmultipush("Ultra Ball", 3)
+        dynmultipush("Energy Root", 40)
+        dynmultipush("Heal Powder", 41)
+        dynmultipush("Revival Herb", 42)
+        dynmultipush("Leppa Berry", 519)
+        dynmultipush("Sitrus Berry", 523)
+        dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_SHOW_ITEM)
+        switch (var(VAR_RESULT)) {
+            case 1:
+                checkitem(ITEM_TINY_MUSHROOM)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Pokéball? Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_POKE_BALL)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_TINY_MUSHROOM)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                    else {
+                        goto(MythicIsland_KecleonShop)
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                }
+            case 2:
+                checkitem(ITEM_TINY_MUSHROOM, 2)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Great Ball? Want 2 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_GREAT_BALL)
+                        msgbox(format(
+                            "> You gave 2 {COLOR BLUE}Tiny Mushrooms{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_TINY_MUSHROOM, 2)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want 2 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                }
+                goto(MythicIsland_KecleonShop)
+            case 3:
+                checkitem(ITEM_BIG_MUSHROOM)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Ultra Ball? Want {COLOR BLUE}Big Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_ULTRA_BALL)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Mushroom{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_MUSHROOM)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want {COLOR BLUE}Big Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                }
+                goto(MythicIsland_KecleonShop)
+            case 40:
+                checkitem(ITEM_TINY_MUSHROOM)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Energy Root? Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_ENERGY_ROOT)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_TINY_MUSHROOM)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                }
+                goto(MythicIsland_KecleonShop)
+            case 41:
+                checkitem(ITEM_TINY_MUSHROOM)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Heal Powder? Want 1 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_HEAL_POWDER)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_TINY_MUSHROOM)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                }
+                goto(MythicIsland_KecleonShop)
+            case 42:
+                checkitem(ITEM_BIG_MUSHROOM)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Revival Herb? Want {COLOR BLUE}Big Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_REVIVAL_HERB)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Big Mushroom{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_BIG_MUSHROOM)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want {COLOR BLUE}Big Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                }
+                goto(MythicIsland_KecleonShop)
+            case 519:
+                checkitem(ITEM_TINY_MUSHROOM)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Leppa Berry? Want 1 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_LEPPA_BERRY)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_TINY_MUSHROOM)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                goto(MythicIsland_KecleonShop)
+                }
+            case 523:
+                checkitem(ITEM_TINY_MUSHROOM)
+                if(var(VAR_RESULT)) {
+                    msgbox(format(
+                        "Want Sitrus Berry? Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                    ), MSGBOX_YESNO)
+                    if(var(VAR_RESULT) == YES) {
+                        playse(SE_SHOP)
+                        waitse
+                        giveitem(ITEM_SITRUS_BERRY)
+                        msgbox(format(
+                            "> You gave 1 {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY} in exchange."
+                        ))
+                        removeitem(ITEM_TINY_MUSHROOM)
+                        msgbox(format(
+                            "Many thank."
+                        ))
+                    }
+                }
+                else {
+                    msgbox(format(
+                        "Want {COLOR BLUE}Tiny Mushroom{COLOR DARK_GRAY}. You no have."
+                    ))
+                }
+                goto(MythicIsland_KecleonShop)
+            default:
+                goto(MythicIsland_KecleonShopEnd)
+        }
+
+    MythicIsland_KecleonShopEnd:
+        msgbox(format(
+            "Luck good."
+        ))
+        closemessage
+        release
+}

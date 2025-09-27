@@ -187,391 +187,446 @@ MythicIsland_IslandEntrance_EnterBoat_2:
 	goto MythicIsland_IslandEntrance_EnterBoat_1
 
 
-MythicIsland_IslandEntrance_Totem::
+MythicIsland_IslandEntrance_Chimecho::
 # 106 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	lock
 # 107 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	goto_if_unset FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE, MythicIsland_IslandEntrance_Totem_2
-MythicIsland_IslandEntrance_Totem_1:
-# 115 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	playse SE_M_HEAL_BELL
+	faceplayer
+# 108 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto_if_unset FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO, MythicIsland_IslandEntrance_Chimecho_2
+MythicIsland_IslandEntrance_Chimecho_1:
 # 116 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	waitse
+	playse SE_M_HEAL_BELL
 # 117 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	special HealPlayerParty
+	waitse
 # 118 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_Totem_Text_1, MSGBOX_YESNO
-# 122 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	special HealPlayerParty
+# 119 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_Chimecho_Text_1, MSGBOX_YESNO
+# 123 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, YES
-	goto_if_eq MythicIsland_IslandEntrance_Totem_5
-# 126 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	goto MythicIsland_IslandEntrance_Totem_End
-MythicIsland_IslandEntrance_Totem_4:
-# 129 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-MythicIsland_StatueTeleport_Entrance:
+	goto_if_eq MythicIsland_IslandEntrance_Chimecho_5
+# 127 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_IslandEntrance_Chimecho_End
+MythicIsland_IslandEntrance_Chimecho_4:
 # 130 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_Totem_Text_2, 0
+MythicIsland_IslandEntrance_ChimechoTeleport:
 # 131 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	goto_if_set FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE, MythicIsland_IslandEntrance_Totem_9
-MythicIsland_IslandEntrance_Totem_8:
-# 134 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_Chimecho_Text_2, 0
+# 133 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto_if_set FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_CHIMECHO, MythicIsland_IslandEntrance_Chimecho_9
+MythicIsland_IslandEntrance_Chimecho_8:
+# 137 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto_if_set FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO, MythicIsland_IslandEntrance_Chimecho_12
+MythicIsland_IslandEntrance_Chimecho_11:
+# 142 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	dynmultistack 0, 0, TRUE, 4, FALSE, 0, DYN_MULTICHOICE_CB_NONE
-# 135 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 144 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	switch VAR_RESULT
-# 136 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	case 1, MythicIsland_IslandEntrance_Totem_13
 # 145 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	goto MythicIsland_IslandEntrance_Totem_End
-MythicIsland_IslandEntrance_Totem_11:
-# 148 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-MythicIsland_IslandEntrance_Totem_End:
-# 149 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	case 1, MythicIsland_IslandEntrance_Chimecho_16
+# 153 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	case 2, MythicIsland_IslandEntrance_Chimecho_17
+# 161 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_IslandEntrance_Chimecho_End
+MythicIsland_IslandEntrance_Chimecho_14:
+# 164 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_Chimecho_End:
+# 165 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	closemessage
-# 150 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 166 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	release
 	return
 
-MythicIsland_IslandEntrance_Totem_2:
-# 108 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	playse SE_M_MOONLIGHT
+MythicIsland_IslandEntrance_Chimecho_2:
 # 109 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	waitse
+	playmoncry SPECIES_CHIMECHO, CRY_MODE_NORMAL
 # 110 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_Totem_Text_0
-# 113 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	setflag FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE
-	goto MythicIsland_IslandEntrance_Totem_1
+	waitmoncry
+# 111 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_Chimecho_Text_0
+# 114 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	setflag FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO
+	goto MythicIsland_IslandEntrance_Chimecho_1
 
-MythicIsland_IslandEntrance_Totem_5:
-# 123 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	goto MythicIsland_StatueTeleport_Entrance
-	goto MythicIsland_IslandEntrance_Totem_4
+MythicIsland_IslandEntrance_Chimecho_5:
+# 124 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_IslandEntrance_ChimechoTeleport
+	goto MythicIsland_IslandEntrance_Chimecho_4
 
-MythicIsland_IslandEntrance_Totem_9:
-# 132 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_Totem_Text_3, 1
-	goto MythicIsland_IslandEntrance_Totem_8
+MythicIsland_IslandEntrance_Chimecho_9:
+# 134 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_Chimecho_Text_3, 1
+	goto MythicIsland_IslandEntrance_Chimecho_8
 
-MythicIsland_IslandEntrance_Totem_13:
-# 137 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	closemessage
+MythicIsland_IslandEntrance_Chimecho_12:
 # 138 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_Chimecho_Text_4, 2
+	goto MythicIsland_IslandEntrance_Chimecho_11
+
+MythicIsland_IslandEntrance_Chimecho_16:
+# 146 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	closemessage
+# 147 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_M_PSYBEAM
-# 139 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 148 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, teleportSpin
-# 140 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 149 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitmovement 0
-# 141 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 150 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, teleportFly
-# 142 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	fadescreen FADE_TO_BLACK
-# 143 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 151 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	waitmovement 0
+# 152 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	warp MAP_MYTHIC_ISLAND_SUNKEN_SHRINE, 13, 62
-	goto MythicIsland_IslandEntrance_Totem_11
+	goto MythicIsland_IslandEntrance_Chimecho_14
+
+MythicIsland_IslandEntrance_Chimecho_17:
+# 154 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	closemessage
+# 155 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	playse SE_M_PSYBEAM
+# 156 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, teleportSpin
+# 157 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	waitmovement 0
+# 158 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, teleportFly
+# 159 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	warp MAP_MYTHIC_ISLAND_LAKE, 10, 32
+	goto MythicIsland_IslandEntrance_Chimecho_14
 
 
 MythicIsland_IslandEntrance_OmastarMerchant::
-# 165 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	lock
-# 166 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	faceplayer
-# 167 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	playmoncry SPECIES_OMASTAR, CRY_MODE_NORMAL
-# 168 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_0
-# 172 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-MythicIsland_OmastarShop:
-# 173 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_1, 0
-# 174 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_2, 211
-# 175 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_3, 212
-# 176 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_4, 213
-# 177 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_5, 214
-# 178 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_6, 215
-# 179 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_7, 215
-# 180 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_8, 216
 # 181 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_9, 217
+	lock
 # 182 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	dynmultistack 0, 0, TRUE, 4, FALSE, 0, DYN_MULTICHOICE_CB_SHOW_ITEM
+	faceplayer
 # 183 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	switch VAR_RESULT
+	playmoncry SPECIES_OMASTAR, CRY_MODE_NORMAL
 # 184 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_0
+# 188 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_OmastarShop:
+# 189 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_1, 0
+# 190 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_2, 211
+# 191 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_3, 212
+# 192 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_4, 213
+# 193 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_5, 214
+# 194 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_6, 215
+# 195 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_7, 215
+# 196 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_8, 216
+# 197 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultipush MythicIsland_IslandEntrance_OmastarMerchant_Text_9, 217
+# 198 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	dynmultistack 0, 0, TRUE, 4, FALSE, 0, DYN_MULTICHOICE_CB_SHOW_ITEM
+# 199 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	switch VAR_RESULT
+# 200 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	case 211, MythicIsland_IslandEntrance_OmastarMerchant_3
-# 211 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 231 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	case 212, MythicIsland_IslandEntrance_OmastarMerchant_4
-# 238 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 262 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	case 213, MythicIsland_IslandEntrance_OmastarMerchant_5
-# 265 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 293 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	case 214, MythicIsland_IslandEntrance_OmastarMerchant_6
-# 292 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 324 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	case 215, MythicIsland_IslandEntrance_OmastarMerchant_7
-# 319 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 355 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	case 216, MythicIsland_IslandEntrance_OmastarMerchant_8
-# 346 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 386 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	case 217, MythicIsland_IslandEntrance_OmastarMerchant_9
-# 374 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 418 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	goto MythicIsland_OmastarShopEnd
 MythicIsland_IslandEntrance_OmastarMerchant_1:
-# 377 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 421 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 MythicIsland_OmastarShopEnd:
-# 378 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_20
-# 381 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 422 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_21
+# 425 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	closemessage
-# 382 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 426 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	release
 	return
 
 MythicIsland_IslandEntrance_OmastarMerchant_3:
-# 185 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 201 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	checkitem ITEM_BIG_PEARL
-# 186 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 202 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne MythicIsland_IslandEntrance_OmastarMerchant_11
-# 207 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 226 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14
+# 229 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_4:
-# 212 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 232 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	checkitem ITEM_BIG_PEARL
-# 213 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 233 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne MythicIsland_IslandEntrance_OmastarMerchant_14
-# 234 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 257 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14
+# 260 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_5:
-# 239 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 263 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	checkitem ITEM_BIG_PEARL
-# 240 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 264 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne MythicIsland_IslandEntrance_OmastarMerchant_17
-# 261 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 288 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14
+# 291 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_6:
-# 266 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 294 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	checkitem ITEM_BIG_PEARL
-# 267 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 295 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne MythicIsland_IslandEntrance_OmastarMerchant_20
-# 288 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 319 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14
+# 322 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_7:
-# 293 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 325 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	checkitem ITEM_BIG_PEARL
-# 294 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 326 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne MythicIsland_IslandEntrance_OmastarMerchant_23
-# 315 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 350 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14
+# 353 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_8:
-# 320 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 356 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	checkitem ITEM_BIG_PEARL
-# 321 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 357 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne MythicIsland_IslandEntrance_OmastarMerchant_26
-# 342 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 381 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14
+# 384 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_9:
-# 347 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 387 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	checkitem ITEM_BIG_PEARL
-# 348 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 388 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne MythicIsland_IslandEntrance_OmastarMerchant_29
-# 369 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 412 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14
+# 415 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_11:
-# 187 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 203 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_10, MSGBOX_YESNO
-# 190 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 206 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_32
-# 203 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 219 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 222 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_14:
-# 214 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_14, MSGBOX_YESNO
-# 217 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 234 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_15, MSGBOX_YESNO
+# 237 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_35
-# 230 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 250 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 253 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_17:
-# 241 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_15, MSGBOX_YESNO
-# 244 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 265 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_16, MSGBOX_YESNO
+# 268 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_38
-# 257 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	goto MythicIsland_OmastarShop
-	goto MythicIsland_IslandEntrance_OmastarMerchant_1
-
-MythicIsland_IslandEntrance_OmastarMerchant_20:
-# 268 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_16, MSGBOX_YESNO
-# 271 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	compare VAR_RESULT, YES
-	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_41
+# 281 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
 # 284 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
-MythicIsland_IslandEntrance_OmastarMerchant_23:
-# 295 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_20:
+# 296 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_17, MSGBOX_YESNO
-# 298 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 299 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	compare VAR_RESULT, YES
+	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_41
+# 312 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 315 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	goto MythicIsland_OmastarShop
+	goto MythicIsland_IslandEntrance_OmastarMerchant_1
+
+MythicIsland_IslandEntrance_OmastarMerchant_23:
+# 327 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_18, MSGBOX_YESNO
+# 330 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_44
-# 311 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 343 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 346 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_26:
-# 322 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_18, MSGBOX_YESNO
-# 325 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 358 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_19, MSGBOX_YESNO
+# 361 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_47
-# 338 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 374 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 377 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_29:
-# 349 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_19, MSGBOX_YESNO
-# 352 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 389 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_20, MSGBOX_YESNO
+# 392 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_IslandEntrance_OmastarMerchant_50
-# 365 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 405 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_13
+# 408 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	goto MythicIsland_OmastarShop
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_32:
-# 191 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 207 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_SHOP
-# 192 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 208 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitse
-# 193 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 209 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	giveitem ITEM_FIRE_STONE
-# 194 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 210 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_11
-# 197 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 213 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	removeitem ITEM_BIG_PEARL
-# 198 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 214 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_12
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_35:
-# 218 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 238 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_SHOP
-# 219 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 239 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitse
-# 220 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 240 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	giveitem ITEM_WATER_STONE
-# 221 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 241 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_11
-# 224 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 244 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	removeitem ITEM_BIG_PEARL
-# 225 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 245 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_12
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_38:
-# 245 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 269 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_SHOP
-# 246 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 270 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitse
-# 247 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 271 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	giveitem ITEM_LEAF_STONE
-# 248 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 272 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_11
-# 251 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 275 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	removeitem ITEM_BIG_PEARL
-# 252 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 276 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_12
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_41:
-# 272 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 300 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_SHOP
-# 273 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 301 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitse
-# 274 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 302 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	giveitem ITEM_ICE_STONE
-# 275 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 303 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_11
-# 278 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 306 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	removeitem ITEM_BIG_PEARL
-# 279 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 307 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_12
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_44:
-# 299 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 331 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_SHOP
-# 300 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 332 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitse
-# 301 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 333 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	giveitem ITEM_SUN_STONE
-# 302 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 334 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_11
-# 305 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 337 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	removeitem ITEM_BIG_PEARL
-# 306 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 338 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_12
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_47:
-# 326 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 362 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_SHOP
-# 327 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 363 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitse
-# 328 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 364 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	giveitem ITEM_MOON_STONE
-# 329 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 365 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_11
-# 332 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 368 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	removeitem ITEM_BIG_PEARL
-# 333 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 369 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_12
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
 MythicIsland_IslandEntrance_OmastarMerchant_50:
-# 353 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 393 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	playse SE_SHOP
-# 354 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 394 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	waitse
-# 355 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 395 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	giveitem ITEM_SHINY_STONE
-# 356 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 396 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_11
-# 359 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 399 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	removeitem ITEM_BIG_PEARL
-# 360 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 400 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	msgbox MythicIsland_IslandEntrance_OmastarMerchant_Text_12
 	goto MythicIsland_IslandEntrance_OmastarMerchant_1
 
@@ -587,110 +642,118 @@ MythicIsland_IslandEntrance_EnterBoat_Text_0:
 # 96 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Enter your boat?$"
 
-MythicIsland_IslandEntrance_Totem_Text_0:
-# 111 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	.string "> The statue glows with a mysterious\n"
-	.string "aura...$"
+MythicIsland_IslandEntrance_Chimecho_Text_0:
+# 112 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	.string "Chime...$"
 
-MythicIsland_IslandEntrance_Totem_Text_1:
-# 119 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	.string "> Being near the statue fills your\n"
-	.string "Pokémon with restoration.\p"
-	.string "Use the statue to teleport?$"
+MythicIsland_IslandEntrance_Chimecho_Text_1:
+# 120 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	.string "> The soothing chime fills your Pokémon\n"
+	.string "with restoration.\p"
+	.string "Would you like Chimecho to teleport\n"
+	.string "you?$"
 
-MythicIsland_IslandEntrance_Totem_Text_2:
-# 130 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_Chimecho_Text_2:
+# 131 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Cancel$"
 
-MythicIsland_IslandEntrance_Totem_Text_3:
-# 132 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
-	.string "Flooded Sanctum$"
+MythicIsland_IslandEntrance_Chimecho_Text_3:
+# 134 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	.string "Flooded Tunnels$"
+
+MythicIsland_IslandEntrance_Chimecho_Text_4:
+# 138 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	.string "Lake$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_0:
-# 169 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 185 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Greetings, brave traveler! Care to take\n"
 	.string "a look at my shiny rock collection? I'd\l"
 	.string "be willing to toss one of them your way,\l"
 	.string "for the price of a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY}.$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_1:
-# 173 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 189 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "I'm good$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_2:
-# 174 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 190 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Fire Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_3:
-# 175 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 191 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Water Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_4:
-# 176 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 192 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Thunder Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_5:
-# 177 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 193 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Leaf Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_6:
-# 178 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 194 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Ice Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_7:
-# 179 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 195 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Sun Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_8:
-# 180 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 196 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Moon Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_9:
-# 181 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 197 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Shiny Stone$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_10:
-# 188 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 204 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Fire Stone{COLOR DARK_GRAY}?$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_11:
-# 195 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 211 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "> You gave 1 {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange.$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_12:
-# 199 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 215 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Thanks for the swap! Is there anything\n"
 	.string "else you would like?$"
 
 MythicIsland_IslandEntrance_OmastarMerchant_Text_13:
-# 208 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+# 220 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+	.string "What stone would you like?$"
+
+MythicIsland_IslandEntrance_OmastarMerchant_Text_14:
+# 227 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in\n"
 	.string "exchange.$"
 
-MythicIsland_IslandEntrance_OmastarMerchant_Text_14:
-# 215 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_Text_15:
+# 235 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Water Stone{COLOR DARK_GRAY}?$"
 
-MythicIsland_IslandEntrance_OmastarMerchant_Text_15:
-# 242 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_Text_16:
+# 266 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Leaf Stone{COLOR DARK_GRAY}?$"
 
-MythicIsland_IslandEntrance_OmastarMerchant_Text_16:
-# 269 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_Text_17:
+# 297 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for an {COLOR BLUE}Ice Stone{COLOR DARK_GRAY}?$"
 
-MythicIsland_IslandEntrance_OmastarMerchant_Text_17:
-# 296 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_Text_18:
+# 328 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Sun Stone{COLOR DARK_GRAY}?$"
 
-MythicIsland_IslandEntrance_OmastarMerchant_Text_18:
-# 323 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_Text_19:
+# 359 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Moon Stone{COLOR DARK_GRAY}?$"
 
-MythicIsland_IslandEntrance_OmastarMerchant_Text_19:
-# 350 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_Text_20:
+# 390 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Exchange a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} for a {COLOR BLUE}Shiny Stone{COLOR DARK_GRAY}?$"
 
-MythicIsland_IslandEntrance_OmastarMerchant_Text_20:
-# 379 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
+MythicIsland_IslandEntrance_OmastarMerchant_Text_21:
+# 423 "data/maps/MythicIsland_IslandEntrance/scripts.pory"
 	.string "Praise Helix, my friend.$"

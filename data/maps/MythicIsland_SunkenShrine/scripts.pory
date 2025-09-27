@@ -52,36 +52,46 @@ script MythicIsland_SunkenShrine_OmanyteNPC {
     closemessage
     release
 }
-script MythicIsland_SunkenShrine_Totem {
+
+script MythicIsland_SunkenShrine_Chimecho {
     lock
-    if(!flag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE)) {
-        playse(SE_M_MOONLIGHT)
-        waitse
+    faceplayer
+    if(!flag(FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO)) {
+        playmoncry(SPECIES_CHIMECHO, CRY_MODE_NORMAL)
+        waitmoncry
         msgbox(format(
-            "> The statue glows with a mysterious aura..."
+            "Chime..."
         ))
-        setflag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE)
+        setflag(FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO)
     }
     playse(SE_M_HEAL_BELL)
     waitse
 	special(HealPlayerParty)
     msgbox(format(
-        "> Being near the statue fills your Pokémon with restoration.\p"
-        "Use the statue to teleport?"
+        "> The soothing chime fills your Pokémon with restoration.\p"
+        "Would you like Chimecho to teleport you?"
     ), MSGBOX_YESNO)
     if(var(VAR_RESULT) == YES) {
-        goto(MythicIsland_StatueTeleport_SunkenShrine)
+        goto(MythicIsland_SunkenShrine_ChimechoTeleport)
     }
     else {
-        goto(MythicIsland_SunkenShrine_Totem_End)
+        goto(MythicIsland_SunkenShrine_Chimecho_End)
     }
 
-    MythicIsland_StatueTeleport_SunkenShrine:
+    MythicIsland_SunkenShrine_ChimechoTeleport:
         dynmultipush("Cancel", 0)
-        if(flag(FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE)) {
+
+        if(flag(FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO)) {
             dynmultipush("Island Entrance", 1)
         }
+
+        if(flag(FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO)) {
+            dynmultipush("Lake", 2)
+        }
+
+
         dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_NONE)
+        
         switch (var(VAR_RESULT)) {
             case 1:
                 closemessage
@@ -89,13 +99,21 @@ script MythicIsland_SunkenShrine_Totem {
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
                 waitmovement(0)
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
-                fadescreen(FADE_TO_BLACK)
+                waitmovement(0)
                 warp(MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE, 25, 29)
+            case 2:
+                closemessage
+                playse(SE_M_PSYBEAM)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
+                waitmovement(0)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
+                waitmovement(0)
+                warp(MAP_MYTHIC_ISLAND_LAKE, 10, 32)
             default: 
-                goto(MythicIsland_SunkenShrine_Totem_End)
+                goto(MythicIsland_SunkenShrine_Chimecho_End)
         }
 
-    MythicIsland_SunkenShrine_Totem_End:
+    MythicIsland_SunkenShrine_Chimecho_End:
         closemessage
         release
 }

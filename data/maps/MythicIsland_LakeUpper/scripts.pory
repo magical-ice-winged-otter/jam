@@ -1,1 +1,37 @@
+const GYARADOS_OBJECT = 1
+
 mapscripts MythicIsland_LakeUpper_MapScripts {}
+
+
+script MythicIsland_LakeUpper_GyaradosMega {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_GYARADOS_MEGA, 50, ITEM_SALAC_BERRY, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_WATERFALL, MOVE_CRUNCH, MOVE_DRAGON_DANCE, MOVE_ICE_FANG)
+    playmoncry(SPECIES_GYARADOS_MEGA, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            break
+        case B_OUTCOME_WON:
+            setflag(FLAG_MYTHIC_ISLAND_LAKE_GYARADOS)
+            removeobject(GYARADOS_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(FLAG_MYTHIC_ISLAND_LAKE_GYARADOS)
+            removeobject(GYARADOS_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(FLAG_MYTHIC_ISLAND_LAKE_GYARADOS)
+            removeobject(GYARADOS_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}

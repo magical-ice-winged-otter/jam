@@ -102,36 +102,45 @@ script MythicIsland_IslandEntrance_EnterBoat {
     release
 }
 
-script MythicIsland_IslandEntrance_Totem {
+script MythicIsland_IslandEntrance_Chimecho {
     lock
-    if(!flag(FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE)) {
-        playse(SE_M_MOONLIGHT)
-        waitse
+    faceplayer
+    if(!flag(FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO)) {
+        playmoncry(SPECIES_CHIMECHO, CRY_MODE_NORMAL)
+        waitmoncry
         msgbox(format(
-            "> The statue glows with a mysterious aura..."
+            "Chime..."
         ))
-        setflag(FLAG_MYTHIC_ISLAND_BEACH_TOTEM_ACTIVE)
+        setflag(FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO)
     }
     playse(SE_M_HEAL_BELL)
     waitse
 	special(HealPlayerParty)
     msgbox(format(
-        "> Being near the statue fills your Pokémon with restoration.\p"
-        "Use the statue to teleport?"
+        "> The soothing chime fills your Pokémon with restoration.\p"
+        "Would you like Chimecho to teleport you?"
     ), MSGBOX_YESNO)
     if(var(VAR_RESULT) == YES) {
-        goto(MythicIsland_StatueTeleport_Entrance)
+        goto(MythicIsland_IslandEntrance_ChimechoTeleport)
     }
     else {
-        goto(MythicIsland_IslandEntrance_Totem_End)
+        goto(MythicIsland_IslandEntrance_Chimecho_End)
     }
 
-    MythicIsland_StatueTeleport_Entrance:
+    MythicIsland_IslandEntrance_ChimechoTeleport:
         dynmultipush("Cancel", 0)
-        if(flag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_TOTEM_ACTIVE)) {
-            dynmultipush("Flooded Sanctum", 1)
+
+        if(flag(FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_CHIMECHO)) {
+            dynmultipush("Flooded Tunnels", 1)
         }
+
+        if(flag(FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO)) {
+            dynmultipush("Lake", 2)
+        }
+
+
         dynmultistack(0,0,TRUE,4,FALSE,0,DYN_MULTICHOICE_CB_NONE)
+        
         switch (var(VAR_RESULT)) {
             case 1:
                 closemessage
@@ -139,13 +148,20 @@ script MythicIsland_IslandEntrance_Totem {
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
                 waitmovement(0)
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
-                fadescreen(FADE_TO_BLACK)
+                waitmovement(0)
                 warp(MAP_MYTHIC_ISLAND_SUNKEN_SHRINE, 13, 62)
+            case 2:
+                closemessage
+                playse(SE_M_PSYBEAM)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
+                waitmovement(0)
+                applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
+                warp(MAP_MYTHIC_ISLAND_LAKE, 10, 32)
             default: 
-                goto(MythicIsland_IslandEntrance_Totem_End)
+                goto(MythicIsland_IslandEntrance_Chimecho_End)
         }
 
-    MythicIsland_IslandEntrance_Totem_End:
+    MythicIsland_IslandEntrance_Chimecho_End:
         closemessage
         release
 }
@@ -200,6 +216,9 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                         ))
                     }
                     else {
+                        msgbox(format(
+                            "What stone would you like?"
+                        ))
                         goto(MythicIsland_OmastarShop)
                     }
                 }
@@ -207,6 +226,7 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                     msgbox(format(
                         "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
                     ))
+                    goto(MythicIsland_OmastarShop)
                 }
             case 212:
                 checkitem(ITEM_BIG_PEARL)
@@ -227,6 +247,9 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                         ))
                     }
                     else {
+                        msgbox(format(
+                            "What stone would you like?"
+                        ))
                         goto(MythicIsland_OmastarShop)
                     }
                 }
@@ -234,6 +257,7 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                     msgbox(format(
                         "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
                     ))
+                    goto(MythicIsland_OmastarShop)
                 }
             case 213:
                 checkitem(ITEM_BIG_PEARL)
@@ -254,6 +278,9 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                         ))
                     }
                     else {
+                        msgbox(format(
+                            "What stone would you like?"
+                        ))
                         goto(MythicIsland_OmastarShop)
                     }
                 }
@@ -261,6 +288,7 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                     msgbox(format(
                         "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
                     ))
+                    goto(MythicIsland_OmastarShop)
                 }
             case 214:
                 checkitem(ITEM_BIG_PEARL)
@@ -281,6 +309,9 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                         ))
                     }
                     else {
+                        msgbox(format(
+                            "What stone would you like?"
+                        ))
                         goto(MythicIsland_OmastarShop)
                     }
                 }
@@ -288,6 +319,7 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                     msgbox(format(
                         "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
                     ))
+                    goto(MythicIsland_OmastarShop)
                 }
             case 215:
                 checkitem(ITEM_BIG_PEARL)
@@ -308,6 +340,9 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                         ))
                     }
                     else {
+                        msgbox(format(
+                            "What stone would you like?"
+                        ))
                         goto(MythicIsland_OmastarShop)
                     }
                 }
@@ -315,6 +350,7 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                     msgbox(format(
                         "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
                     ))
+                    goto(MythicIsland_OmastarShop)
                 }
             case 216:
                 checkitem(ITEM_BIG_PEARL)
@@ -335,6 +371,9 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                         ))
                     }
                     else {
+                        msgbox(format(
+                            "What stone would you like?"
+                        ))
                         goto(MythicIsland_OmastarShop)
                     }
                 }
@@ -342,6 +381,7 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                     msgbox(format(
                         "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
                     ))
+                    goto(MythicIsland_OmastarShop)
                 }
             case 217:
                 checkitem(ITEM_BIG_PEARL)
@@ -362,6 +402,9 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                         ))
                     }
                     else {
+                        msgbox(format(
+                            "What stone would you like?"
+                        ))
                         goto(MythicIsland_OmastarShop)
                     }
                 }
@@ -369,6 +412,7 @@ script MythicIsland_IslandEntrance_OmastarMerchant {
                     msgbox(format(
                         "Sorry, I only want a {COLOR BLUE}Big Pearl{COLOR DARK_GRAY} in exchange."
                     ))
+                    goto(MythicIsland_OmastarShop)
                 }
             default:
                 goto(MythicIsland_OmastarShopEnd)

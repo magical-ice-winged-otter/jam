@@ -4530,6 +4530,16 @@
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/MythicIsland_Badlands/border.bin",
       "blockdata_filepath": "data/layouts/MythicIsland_Badlands/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_LAKE_SHOP",
+      "name": "MythicIsland_LakeShop_Layout",
+      "width": 11,
+      "height": 9,
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseTree",
+      "border_filepath": "data/layouts/MythicIsland_LakeShop/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_LakeShop/map.bin"
     }
   ]
 }
