@@ -440,10 +440,10 @@
 
 
 // island-game
-#define OBJ_EVENT_PAL_TAG_JAMIE_NORMAL            0x1200
-#define OBJ_EVENT_PAL_TAG_JAMIE_FIELD_MOVE        0x1201
-#define OBJ_EVENT_PAL_TAG_JAMIE_SURFING           0x1202
-#define OBJ_EVENT_PAL_TAG_JAMIE_UNDERWATER        0x1203
+#define OBJ_EVENT_PAL_TAG_JAMIE_NORMAL            0x1300
+#define OBJ_EVENT_PAL_TAG_JAMIE_FIELD_MOVE        0x1301
+#define OBJ_EVENT_PAL_TAG_JAMIE_SURFING           0x1302
+#define OBJ_EVENT_PAL_TAG_JAMIE_UNDERWATER        0x1303
 
 
 // This + localId is used as the tileTag
