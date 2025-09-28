@@ -27,16 +27,16 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 31,
+      "x": 30,
       "y": 27,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_LUM_BERRY",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_MYTHIC_ISLAND_JUNGLE_LUM_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(YANMA)",
@@ -89,9 +89,76 @@
       "trainer_sight_or_berry_tree_id": "6",
       "script": "MythicIsland_Jungle_Encounter_Liepard2",
       "flag": "FLAG_TEMP_4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TOGEDEMARU)",
+      "x": 3,
+      "y": 50,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 6,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MythicIsland_Jungle_Encounter_Togedemaru",
+      "flag": "FLAG_TEMP_5"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LIEPARD)",
+      "x": 7,
+      "y": 38,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE_IN_GRASS",
+      "movement_range_x": 4,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "MythicIsland_Jungle_Encounter_Liepard3",
+      "flag": "FLAG_TEMP_6"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CROCONAW)",
+      "x": 38,
+      "y": 33,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MythicIsland_Jungle_Encounter_Croconaw",
+      "flag": "FLAG_TEMP_7"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TOGEDEMARU)",
+      "x": 15,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 6,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MythicIsland_Jungle_Encounter_Togedemaru",
+      "flag": "FLAG_TEMP_5"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 29,
+      "y": 58,
+      "elevation": 0,
+      "dest_map": "MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 30,
+      "y": 58,
+      "elevation": 0,
+      "dest_map": "MAP_MYTHIC_ISLAND_ISLAND_ENTRANCE",
+      "dest_warp_id": "2"
+    }
+  ],
   "coord_events": [],
   "bg_events": [
     {

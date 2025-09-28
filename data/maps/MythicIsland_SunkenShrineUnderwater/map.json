@@ -242,7 +242,15 @@
       "flag": "FLAG_TEMP_1B"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 78,
+      "elevation": 0,
+      "dest_map": "MAP_MYTHIC_ISLAND_LAKE_UNDERWATER",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": [
     {

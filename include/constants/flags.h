@@ -1246,7 +1246,7 @@
 #define FLAG_MYTHIC_ISLAND_LAKE_CHIMECHO                            0x49F
 #define FLAG_MYTHIC_ISLAND_LAKE_GYARADOS                            0x4A0
 #define FLAG_MYTHIC_ISLAND_LAKE_DHELMISE                            0x4A1
-#define FLAG_UNUSED_0x4A2                                           0x4A2 // Unused Flag
+#define FLAG_MYTHIC_ISLAND_JUNGLE_LUM_BERRY                         0x4A2
 #define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
 #define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
 #define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
