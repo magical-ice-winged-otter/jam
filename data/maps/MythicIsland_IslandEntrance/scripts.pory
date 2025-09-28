@@ -102,6 +102,14 @@ script MythicIsland_IslandEntrance_EnterBoat {
     release
 }
 
+script MythicIsland_IslandEntrance_EnterJungleLeft {
+    warp(MAP_MYTHIC_ISLAND_JUNGLE, 29,58)
+}
+
+script MythicIsland_IslandEntrance_EnterJungleRight {
+    warp(MAP_MYTHIC_ISLAND_JUNGLE, 30,58)
+}
+
 script MythicIsland_IslandEntrance_Chimecho {
     lock
     faceplayer
