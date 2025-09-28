@@ -292,6 +292,17 @@ const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steve
 const u16 gTrainerBackPicPalette_Red[] = INCBIN_U16("graphics/trainers/back_pics/red.gbapal");
 const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pics/leaf.gbapal");
 
+
+
+
+// island-game
+const u32 gTrainerFrontPic_Jamie[] = INCBIN_U32("graphics/trainers/front_pics/jamie.4bpp.smol");
+const u16 gTrainerPalette_Jamie[] = INCBIN_U16("graphics/trainers/front_pics/jamie.gbapal");
+
+const u8 gTrainerBackPic_Jamie[] = INCBIN_U8("graphics/trainers/back_pics/jamie.4bpp");
+const u16 gTrainerBackPicPalette_Jamie[] = INCBIN_U16("graphics/trainers/back_pics/jamie.gbapal");
+
+
 // The first two parameters invoke a front pic and palette by
 // calling a "TRAINER_PIC" constant (e.g. TRAINER_PIC_HIKER), and
 // gTrainerFrontPic/gTrainerPalette pointers, (e.g "gTrainerFrontPic_Hiker" and "gTrainerPalette_Hiker").
@@ -401,6 +412,10 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_LEAF, gTrainerFrontPic_Leaf, gTrainerPalette_Leaf),
     TRAINER_SPRITE(TRAINER_PIC_RS_BRENDAN, gTrainerFrontPic_RubySapphireBrendan, gTrainerPalette_RubySapphireBrendan),
     TRAINER_SPRITE(TRAINER_PIC_RS_MAY, gTrainerFrontPic_RubySapphireMay, gTrainerPalette_RubySapphireMay),
+
+
+    // island-game
+    TRAINER_SPRITE(TRAINER_PIC_JAMIE, gTrainerFrontPic_Jamie, gTrainerPalette_Jamie),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
@@ -457,6 +472,18 @@ static const union AnimCmd *const sBackAnims_Kanto[] =
     sAnimCmd_Point_HGSS_Red_Leaf,
 };
 
+
+
+// const struct SpriteFrameImage gTrainerBackPicTable_Jamie[] =
+// {
+//     {gTrainerBackPic_Jamie + TRAINER_PIC_SIZE * 0, TRAINER_PIC_SIZE},
+//     {gTrainerBackPic_Jamie + TRAINER_PIC_SIZE * 1, TRAINER_PIC_SIZE},
+//     {gTrainerBackPic_Jamie + TRAINER_PIC_SIZE * 2, TRAINER_PIC_SIZE},
+//     {gTrainerBackPic_Jamie + TRAINER_PIC_SIZE * 3, TRAINER_PIC_SIZE},
+//     {gTrainerBackPic_Jamie + TRAINER_PIC_SIZE * 4, TRAINER_PIC_SIZE},
+// };
+
+
 #define TRAINER_BACK_SPRITE(trainerPic, yOffset, sprite, pal, anim)                          \
     [trainerPic] =                                                                           \
     {                                                                                        \
@@ -465,6 +492,8 @@ static const union AnimCmd *const sBackAnims_Kanto[] =
         .palette = {.data = pal, .tag = trainerPic},                                         \
         .animation = anim,                                                                   \
     }
+
+
 
 const struct TrainerBacksprite gTrainerBacksprites[] =
 {
@@ -476,4 +505,7 @@ const struct TrainerBacksprite gTrainerBacksprites[] =
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY, 4, gTrainerBackPic_RubySapphireMay, gTrainerPalette_RubySapphireMay, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_WALLY, 4, gTrainerBackPic_Wally, gTrainerPalette_Wally, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_STEVEN, 4, gTrainerBackPic_Steven, gTrainerPalette_Steven, sBackAnims_Hoenn),
+
+    // island-game
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_JAMIE, 5, gTrainerBackPic_Jamie, gTrainerBackPicPalette_Jamie, sBackAnims_Kanto),
 };

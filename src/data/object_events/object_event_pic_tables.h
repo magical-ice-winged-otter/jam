@@ -1,5 +1,43 @@
+// island-game
+static const struct SpriteFrameImage sPicTable_JamieNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_JamieNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_JamieSurfing[] = {
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_JamieSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_JamieUnderwater[] = {
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_JamieUnderwater, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_JamieFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_JamieFieldMove, 4, 4),
+};
+
+
+
 static const struct SpriteFrameImage sPicTable_BrendanNormal[] = {
-    overworld_ascending_frames(gObjectEventPic_BrendanNormalRunning, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_JamieNormalRunning, 2, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_BrendanMachBike[] = {
