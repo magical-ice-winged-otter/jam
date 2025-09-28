@@ -113,6 +113,16 @@ enum BattlerId
 #define B_OUTCOME_MON_TELEPORTED       10
 #define B_OUTCOME_LINK_BATTLE_RAN      (1 << 7) // 128
 
+// Wild Encounter Types
+#define ENCOUNTER_FIXED         0
+#define ENCOUNTER_LAND          1
+#define ENCOUNTER_SURF          2
+#define ENCOUNTER_ROCK_SMASH    3
+#define ENCOUNTER_OLD_ROD       4
+#define ENCOUNTER_GOOD_ROD      5
+#define ENCOUNTER_SUPER_ROD     6
+#define ENCOUNTER_TYPES         7
+
 // Non-volatile status conditions
 // These remain outside of battle and after switching out.
 // If a new STATUS1 is added here, it should also be added to
@@ -594,6 +604,7 @@ enum BattleEnvironments
 #define B_WIN_VS_OUTCOME_LEFT    22
 #define B_WIN_VS_OUTCOME_RIGHT   23
 #define B_WIN_MOVE_DESCRIPTION   24
+#define B_WIN_BOON               25
 
 // The following are duplicate id values for windows that Battle Arena uses differently.
 #define ARENA_WIN_PLAYER_NAME      15
@@ -637,6 +648,13 @@ enum BattleEnvironments
 
 // Constants for Torment
 #define PERMANENT_TORMENT   0xF
+
+// Boon constants
+#define BOON_X_START 22
+#define BOON_X_END 29
+#define BOON_Y_START 6
+#define BOON_Y_END 13
+#define BOON_RECT BOON_X_START, BOON_Y_START, BOON_X_END, BOON_Y_END
 
 // Constants for B_VAR_STARTING_STATUS
 // Timer value controlled by B_VAR_STARTING_STATUS_TIMER

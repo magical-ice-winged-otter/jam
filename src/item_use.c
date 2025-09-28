@@ -1136,7 +1136,8 @@ static u32 GetBallThrowableState(void)
     else if (FlagGet(B_FLAG_NO_CATCHING))
         return BALL_THROW_UNABLE_DISABLED_FLAG;
 
-    return BALL_THROW_ABLE;
+    // BOON : Disable normal catching
+    return BALL_THROW_UNABLE_DISABLED_FLAG;
 }
 
 bool32 CanThrowBall(void)

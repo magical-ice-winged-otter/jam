@@ -6,7 +6,7 @@
 // still has them in the ROM. This is because the developers forgot
 // to define NDEBUG before release, however this has been changed as
 // Ruby's actual debug build does not use the AGBPrint features.
-#define NDEBUG
+//#define NDEBUG
 
 // To enable printf debugging, comment out "#define NDEBUG". This allows
 // the various AGBPrint functions to be used. (See include/gba/isagbprint.h).
@@ -71,7 +71,8 @@
 #define HQ_RANDOM                    TRUE    // If TRUE, replaces the default RNG with an implementation of SFC32 RNG. May break code that relies on RNG.
 #define AUTO_SCROLL_TEXT             TRUE    // If TRUE, text will automatically scroll to the next line after NUM_FRAMES_AUTO_SCROLL_DELAY. Players can still press A_BUTTON or B_BUTTON to scroll on their own.
 #define NUM_FRAMES_AUTO_SCROLL_DELAY 49
-#define PHONEMES_SHARED              TRUE   // If TRUE, bard phonemes all reference the same sound (sound/direct_sound_samples/phonemes/shared.bin) to save ROM space.
+#define PHONEMES_SHARED              TRUE    // If TRUE, bard phonemes all reference the same sound (sound/direct_sound_samples/phonemes/shared.bin) to save ROM space.
+#define TEXT_SPEED_MODIFIER          4       // Number of characters to write to text printers per frame
 
 // Measurement system constants to be used for UNITS
 #define UNITS_IMPERIAL               0       // Inches, feet, pounds

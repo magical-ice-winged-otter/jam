@@ -40,6 +40,7 @@
 #define sSWITCH_CASE                 (gBattleScripting + 0x36) // switchCase
 #define sBERRY_OVERRIDE              (gBattleScripting + 0x37) // overrideBerryRequirements
 #define sSTICKY_WEB_STAT_DROP        (gBattleScripting + 0x38) // stickyWebStatDrop
+#define sCHOOSE_BOON_STATE           (gBattleScripting + 0x39) // chooseBoonState
 
 // Array entries for battle communication
 #define MULTIUSE_STATE          0

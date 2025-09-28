@@ -4410,6 +4410,46 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_ISLAND_ENTRANCE",
+      "name": "MythicIsland_IslandEntrance_Layout",
+      "width": 34,
+      "height": 46,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/MythicIsland_IslandEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_IslandEntrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_LAKE",
+      "name": "MythicIsland_Lake_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/MythicIsland_Lake/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_Lake/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_TROPICS",
+      "name": "MythicIsland_Tropics_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MythicIsland_Tropics/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_Tropics/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYTHIC_ISLAND_DESERT",
+      "name": "MythicIsland_Desert_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/MythicIsland_Desert/border.bin",
+      "blockdata_filepath": "data/layouts/MythicIsland_Desert/map.bin"
     }
   ]
 }

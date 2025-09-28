@@ -381,6 +381,15 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .paletteNum = 5,
         .baseBlock = 0x0350,
     },
+    [B_WIN_BOON] = {
+        .bg = 0,
+        .tilemapLeft = 24,
+        .tilemapTop = 7,
+        .width = 4,
+        .height = 6,
+        .paletteNum = 5,
+        .baseBlock = 0x0100,
+    },
     DUMMY_WIN_TEMPLATE
 };
 
@@ -601,6 +610,15 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .height = 6,
         .paletteNum = 5,
         .baseBlock = 0x0350,
+    },
+    [B_WIN_BOON] = {
+        .bg = 0,
+        .tilemapLeft = 26,
+        .tilemapTop = 9,
+        .width = 3,
+        .height = 4,
+        .paletteNum = 5,
+        .baseBlock = 0x0100,
     },
     DUMMY_WIN_TEMPLATE
 };

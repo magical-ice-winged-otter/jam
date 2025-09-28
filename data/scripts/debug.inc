@@ -137,28 +137,69 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	setwildbattle SPECIES_WEEDLE 15
+	dowildbattle
 	release
 	end
 
 Debug_EventScript_Script_2::
+	setwildbattle SPECIES_KAKUNA 15
+	dowildbattle
 	release
 	end
 
 Debug_EventScript_Script_3::
+	setwildbattle SPECIES_BEEDRILL 15
+	dowildbattle
 	release
 	end
 
 Debug_EventScript_Script_4::
+	setwildbattle SPECIES_ARTICUNO 15
+	dowildbattle
 	release
 	end
 
 Debug_EventScript_Script_5::
+	checkmove MOVE_AERIAL_ACE
+	goto_if_ne VAR_RESULT, PARTY_SIZE, Debug_EventScript_Script_5_HasMove
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Debug_EventScript_Script_5_MissingMove
+Debug_EventScript_Script_5_HasMove::
+	playmoncry VAR_0x8004, CRY_MODE_NORMAL
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
+	msgbox Debug_EventScript_Script_5_HasMove_Text, MSGBOX_DEFAULT
+	goto Debug_EventScript_Script_5_End
+Debug_EventScript_Script_5_MissingMove::
+	msgbox Debug_EventScript_Script_5_MissingMove_Text, MSGBOX_DEFAULT
+	goto Debug_EventScript_Script_5_End
+Debug_EventScript_Script_5_End::
 	release
 	end
 
+Debug_EventScript_Script_5_HasMove_Text:
+	.string "{STR_VAR_1} have the move!$"
+Debug_EventScript_Script_5_MissingMove_Text:
+	.string "You are missing the move$"
+
 Debug_EventScript_Script_6::
+	setstepfunction Debug_EventScript_Script_6_OnStep
 	release
 	end
+
+Debug_EventScript_Script_6_OnStep::
+	addvar VAR_TEMP_0, 1
+	goto_if_eq VAR_TEMP_0, 10, Debug_EventScript_Script_6_ReachedStepLimit
+	release
+	end
+
+Debug_EventScript_Script_6_ReachedStepLimit::
+	hidemapnamepopup
+	msgbox Debug_EventScript_Script_6_ReachedStepLimit_Text, MSGBOX_DEFAULT
+	release
+	end
+
+Debug_EventScript_Script_6_ReachedStepLimit_Text:
+	.string "You took 10 steps!$"
 
 Debug_EventScript_Script_7::
 	release
