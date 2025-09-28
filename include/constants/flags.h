@@ -669,7 +669,7 @@
 #define FLAG_MYTHICISLAND_JUNGLE_BigMushroom  0x267
 #define FLAG_MYTHICISLAND_JUNGLE_LumBerry  0x268
 #define FLAG_MYTHICISLAND_LAKE_LeppaBerry  0x269
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
+#define FLAG_MYTHICISLAND_JUNGLE_Revive  0x26A 
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
 #define FLAG_UNUSED_0x26D  0x26D // Unused Flag
@@ -1236,7 +1236,7 @@
 #define FLAG_MYTHIC_ISLAND_BEACH_CHIMECHO                           0x495
 #define FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED                    0x496
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_CHIMECHO                   0x497
-#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_HEART_SCALE                0x498 
+#define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_STAR_PIECE                 0x498 
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_REVIVAL_HERB               0x499 
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_ENERGY_ROOT                0x49A
 #define FLAG_MYTHIC_ISLAND_SUNKEN_SHRINE_PEARL_STRING               0x49B
@@ -1247,13 +1247,13 @@
 #define FLAG_MYTHIC_ISLAND_LAKE_GYARADOS                            0x4A0
 #define FLAG_MYTHIC_ISLAND_LAKE_DHELMISE                            0x4A1
 #define FLAG_MYTHIC_ISLAND_JUNGLE_LUM_BERRY                         0x4A2
-#define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
-#define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
-#define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
-#define FLAG_UNUSED_0x4A6                                           0x4A6 // Unused Flag
-#define FLAG_UNUSED_0x4A7                                           0x4A7 // Unused Flag
-#define FLAG_UNUSED_0x4A8                                           0x4A8 // Unused Flag
-#define FLAG_UNUSED_0x4A9                                           0x4A9 // Unused Flag
+#define FLAG_MYTHIC_ISLAND_BEACH_LEFTOVERS                          0x4A3
+#define FLAG_MYTHIC_ISLAND_MEW_FIRST_SIGHTING                       0x4A4 
+#define FLAG_MYTHIC_ISLAND_THUNDER_PLATE_INSERTED                   0x4A5 
+#define FLAG_MYTHIC_ISLAND_FIRE_PLATE_INSERTED                      0x4A6 
+#define FLAG_MYTHIC_ISLAND_WATER_PLATE_INSERTED                     0x4A7
+#define FLAG_MYTHIC_ISLAND_TEMPLE_OPEN                              0x4A8
+#define FLAG_MYTHIC_ISLAND_WATER_PLATE_OBTAINED                     0x4A9
 #define FLAG_UNUSED_0x4AA                                           0x4AA // Unused Flag
 #define FLAG_UNUSED_0x4AB                                           0x4AB // Unused Flag
 #define FLAG_UNUSED_0x4AC                                           0x4AC // Unused Flag

@@ -22,7 +22,233 @@ const CROCONAW_OBJECT = 8
 const SHIELDON_FLAG = FLAG_TEMP_8
 const SHIELDON_OBJECT = 9
 
-mapscripts MythicIsland_Jungle_MapScripts {}
+const LINOONE_FLAG = FLAG_TEMP_9
+const LINOONE_OBJECT = 10
+
+const COMFEY_FLAG = FLAG_TEMP_A
+const COMFEY_OBJECT = 11
+
+const LIEPARD_FLAG_4 = FLAG_TEMP_B
+const LIEPARD_OBJECT_4 = 12
+
+const LIEPARD_FLAG_5 = FLAG_TEMP_C
+const LIEPARD_OBJECT_5 = 13
+
+const MEW_OBJECT = 14
+
+mapscripts MythicIsland_Jungle_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(flag(FLAG_MYTHIC_ISLAND_MEW_FIRST_SIGHTING)) {
+            setvar(VAR_TEMP_0, 1)
+        }
+    }
+    MAP_SCRIPT_ON_LOAD {
+        if(!flag(FLAG_MYTHIC_ISLAND_TEMPLE_OPEN)) {
+            setmetatile(28, 43, METATILE_General_RockWall_GrassBase, TRUE)
+            setmetatile(28, 42, METATILE_General_RockWall_RockBase, TRUE)
+        }
+    }
+}
+
+movement MewRunAway {
+    walk_up * 9
+    walk_left
+    face_down 
+}
+
+movement ChaseMewLeft {
+    walk_up * 9
+    walk_left
+    face_up
+}
+
+script MythicIsland_Jungle_ApproachMewLeft {
+    lockall
+    playse(SE_PIN)
+    applymovement(MEW_OBJECT, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    delay(30)
+    applymovement(MEW_OBJECT, Common_Movement_FaceDown)
+    waitmovement(0)
+    delay(30)
+    playmoncry(SPECIES_MEW, CRY_MODE_NORMAL)
+    applymovement(MEW_OBJECT, MewRunAway)
+    delay(30)
+    applymovement(OBJ_EVENT_ID_PLAYER, ChaseMewLeft)
+    waitmovement(0)
+    playse(SE_M_PSYBEAM)
+    applymovement(MEW_OBJECT, teleportSpin)
+    waitmovement(0)
+    playse(SE_M_TELEPORT)
+    applymovement(MEW_OBJECT, teleportFly)
+    waitmovement(0)
+    setflag(FLAG_MYTHIC_ISLAND_MEW_FIRST_SIGHTING)
+    removeobject(MEW_OBJECT)
+    setvar(VAR_TEMP_0, 1)
+    release
+}
+
+script MythicIsland_Jungle_ApproachMewRight {
+    lockall
+    playse(SE_PIN)
+    applymovement(MEW_OBJECT, Common_Movement_ExclamationMark)
+    waitmovement(0)
+    delay(30)
+    applymovement(MEW_OBJECT, Common_Movement_FaceDown)
+    waitmovement(0)
+    delay(30)
+    playmoncry(SPECIES_MEW, CRY_MODE_NORMAL)
+    applymovement(MEW_OBJECT, MewRunAway)
+    delay(30)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft)
+    waitmovement(0)
+    applymovement(OBJ_EVENT_ID_PLAYER, ChaseMewLeft)
+    waitmovement(0)
+    playse(SE_M_PSYBEAM)
+    applymovement(MEW_OBJECT, teleportSpin)
+    waitmovement(0)
+    playse(SE_M_TELEPORT)
+    applymovement(MEW_OBJECT, teleportFly)
+    waitmovement(0)
+    setflag(FLAG_MYTHIC_ISLAND_MEW_FIRST_SIGHTING)
+    removeobject(MEW_OBJECT)
+    setvar(VAR_TEMP_0, 1)
+    release
+}
+
+
+script MythicIsland_Jungle_KeyHole1 {
+    lock
+    if(flag(FLAG_MYTHIC_ISLAND_THUNDER_PLATE_INSERTED)) {
+        msgbox(format(
+            "The Zap Plate fits perfectly."
+        ))
+    }
+    else {
+        msgbox(format(
+            "It looks like a stone plate of sorts could be placed in here."
+        ))
+        checkitem(ITEM_ZAP_PLATE) 
+        if (var(VAR_RESULT)) {
+            msgbox(format(
+                "Insert the Zap Plate inside?"
+            ), MSGBOX_YESNO)
+            if(var(VAR_RESULT) == YES) {
+                playse(SE_M_DETECT)
+                waitse
+                delay(30)
+                removeitem(ITEM_ZAP_PLATE)
+                msgbox(format(
+                    "The Zap Plate fits perfectly."
+                ))
+                closemessage
+                setflag(FLAG_MYTHIC_ISLAND_THUNDER_PLATE_INSERTED)
+                call(MythicIsland_Jungle_AllKeys)
+            }
+        } 
+    }
+    closemessage
+    release
+}
+
+script MythicIsland_Jungle_KeyHole2 {
+    lock
+    if(flag(FLAG_MYTHIC_ISLAND_FIRE_PLATE_INSERTED)) {
+        msgbox(format(
+            "The Flame Plate fits perfectly."
+        ))
+    }
+    else {
+        msgbox(format(
+            "It looks like a stone plate of sorts could be placed in here."
+        ))
+        checkitem(ITEM_FLAME_PLATE) 
+        if (var(VAR_RESULT)) {
+            msgbox(format(
+                "Insert the Flame Plate inside?"
+            ), MSGBOX_YESNO)
+            if(var(VAR_RESULT) == YES) {
+                playse(SE_M_DETECT)
+                waitse
+                delay(30)
+                removeitem(ITEM_FLAME_PLATE)
+                msgbox(format(
+                    "The Thunder Plate fits perfectly."
+                ))
+                closemessage
+                setflag(FLAG_MYTHIC_ISLAND_FIRE_PLATE_INSERTED)
+                call(MythicIsland_Jungle_AllKeys)
+            }
+        } 
+    }
+    closemessage
+    release
+}
+
+script MythicIsland_Jungle_KeyHole3 {
+    lock
+    if(flag(FLAG_MYTHIC_ISLAND_WATER_PLATE_INSERTED)) {
+        msgbox(format(
+            "The Splash Plate fits perfectly."
+        ))
+    }
+    else {
+        msgbox(format(
+            "It looks like a stone plate of sorts could be placed in here."
+        ))
+        checkitem(ITEM_SPLASH_PLATE) 
+        if (var(VAR_RESULT)) {
+            msgbox(format(
+                "Insert the Splash Plate inside?"
+            ), MSGBOX_YESNO)
+            if(var(VAR_RESULT) == YES) {
+                playse(SE_M_DETECT)
+                waitse
+                delay(30)
+                removeitem(ITEM_SPLASH_PLATE)
+                msgbox(format(
+                    "The Splash Plate fits perfectly."
+                ))
+                closemessage
+                setflag(FLAG_MYTHIC_ISLAND_WATER_PLATE_INSERTED)
+                call(MythicIsland_Jungle_AllKeys)
+            }
+        } 
+    }
+    closemessage
+    release
+}
+
+script MythicIsland_Jungle_AllKeys {
+    if(flag(FLAG_MYTHIC_ISLAND_WATER_PLATE_INSERTED) && flag(FLAG_MYTHIC_ISLAND_FIRE_PLATE_INSERTED) && flag(FLAG_MYTHIC_ISLAND_THUNDER_PLATE_INSERTED)) {
+        setflag(FLAG_MYTHIC_ISLAND_TEMPLE_OPEN)
+        lockall
+        setvar(VAR_0x8004, 1)
+        setvar(VAR_0x8005, 1)
+        setvar(VAR_0x8006, 8)
+        setvar(VAR_0x8007, 3)
+        special(ShakeCamera)
+        waitstate
+        delay(30)
+        setvar(VAR_0x8004, 1)
+        setvar(VAR_0x8005, 1)
+        setvar(VAR_0x8006, 16)
+        setvar(VAR_0x8007, 3)
+        special(ShakeCamera)
+        waitstate
+        delay(30)
+        playse(SE_EFFECTIVE)
+        setmetatile(28, 43, METATILE_General_CaveEntrance_Bottom, FALSE)
+        setmetatile(28, 42, METATILE_General_CaveEntrance_Top, TRUE)
+        special(DrawWholeMapView)
+        delay(30)
+        waitse
+        releaseall
+        end
+    }
+    closemessage
+    release
+}
 
 
 
@@ -32,6 +258,7 @@ script MythicIsland_Jungle_Encounter_Yanma {
     faceplayer
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_YANMA, 30, ITEM_WIDE_LENS, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_SIGNAL_BEAM, MOVE_WING_ATTACK, MOVE_DOUBLE_TEAM, MOVE_DETECT)
     playmoncry(SPECIES_YANMA, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -67,6 +294,7 @@ script MythicIsland_Jungle_Encounter_Tangela {
     faceplayer
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_TANGELA, 30, ITEM_BIG_ROOT, NUM_NATURES, 2, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_GIGA_DRAIN, MOVE_LEECH_SEED, MOVE_STUN_SPORE, MOVE_INGRAIN)
     playmoncry(SPECIES_TANGELA, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -102,7 +330,8 @@ script MythicIsland_Jungle_Encounter_Togedemaru {
     faceplayer
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
-    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_TOGEDEMARU, 30, ITEM_ELECTRIC_GEM, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_NUZZLE, MOVE_ZING_ZAP, MOVE_ELECTRIC_TERRAIN, MOVE_SPIKY_SHIELD)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_TOGEDEMARU, 30, ITEM_ELECTRIC_SEED, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_NUZZLE, MOVE_ZING_ZAP, MOVE_ELECTRIC_TERRAIN, MOVE_SPIKY_SHIELD)
     playmoncry(SPECIES_TOGEDEMARU, CRY_MODE_ENCOUNTER)
     waitmoncry
     setflag(FLAG_SYS_CTRL_OBJ_DELETE)
@@ -137,6 +366,7 @@ script MythicIsland_Jungle_Encounter_Croconaw {
     faceplayer
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_CROCONAW, 30, ITEM_WATER_GEM, NUM_NATURES, 2, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_AQUA_TAIL, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_AQUA_JET)
     playmoncry(SPECIES_CROCONAW, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -172,8 +402,9 @@ script MythicIsland_Jungle_Encounter_Shieldon {
     faceplayer
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
-    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SHIELDON, 30, ITEM_WATER_GEM, NUM_NATURES, 2, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_AQUA_TAIL, MOVE_ICE_FANG, MOVE_CRUNCH, MOVE_AQUA_JET)
-    playmoncry(SPECIES_CROCONAW, CRY_MODE_ENCOUNTER)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SHIELDON, 30, ITEM_ENIGMA_BERRY, NUM_NATURES, 2, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_METAL_BURST, MOVE_ANCIENT_POWER, MOVE_PROTECT, MOVE_SWAGGER)
+    playmoncry(SPECIES_SHIELDON, CRY_MODE_ENCOUNTER)
     waitmoncry
     setflag(FLAG_SYS_CTRL_OBJ_DELETE)
     dowildbattle
@@ -187,26 +418,104 @@ script MythicIsland_Jungle_Encounter_Shieldon {
         case B_OUTCOME_RAN:
             break
         case B_OUTCOME_WON:
-            setflag(CROCONAW_FLAG)
-            removeobject(CROCONAW_OBJECT)
+            setflag(SHIELDON_FLAG)
+            removeobject(SHIELDON_OBJECT)
             goto(Common_EventScript_RemoveStaticPokemon)
         case B_OUTCOME_CAUGHT:
-            setflag(CROCONAW_FLAG)
-            removeobject(CROCONAW_OBJECT)
+            setflag(SHIELDON_FLAG)
+            removeobject(SHIELDON_OBJECT)
             goto(Common_EventScript_RemoveStaticPokemon)
         default:
-            setflag(CROCONAW_FLAG)
-            removeobject(CROCONAW_OBJECT)
+            setflag(SHIELDON_FLAG)
+            removeobject(SHIELDON_OBJECT)
             goto(Common_EventScript_RemoveStaticPokemon)
     }
     release
 }
 
 
+
+script MythicIsland_Jungle_Encounter_Linoone {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LINOONE, 35, ITEM_STARF_BERRY, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_CUT, MOVE_PLAY_ROUGH, MOVE_SLASH, MOVE_HONE_CLAWS)
+    playmoncry(SPECIES_LINOONE, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(LINOONE_FLAG)
+            removeobject(LINOONE_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(LINOONE_FLAG)
+            removeobject(LINOONE_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(LINOONE_FLAG)
+            removeobject(LINOONE_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(LINOONE_FLAG)
+            removeobject(LINOONE_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+
+
+script MythicIsland_Jungle_Encounter_Comfey {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_COMFEY, 30, ITEM_GRASSY_SEED, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_DRAINING_KISS, MOVE_SYNTHESIS, MOVE_GRASSY_TERRAIN, MOVE_LEECH_SEED)
+    playmoncry(SPECIES_COMFEY, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(COMFEY_FLAG)
+            removeobject(COMFEY_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(COMFEY_FLAG)
+            removeobject(COMFEY_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(COMFEY_FLAG)
+            removeobject(COMFEY_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(COMFEY_FLAG)
+            removeobject(COMFEY_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
 script MythicIsland_Jungle_Encounter_Liepard {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LIEPARD, 35, ITEM_NORMAL_GEM, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_FAKE_OUT, MOVE_COVET, MOVE_ENCORE, MOVE_NIGHT_SLASH)
     playmoncry(SPECIES_LIEPARD, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -244,6 +553,7 @@ script MythicIsland_Jungle_Encounter_Liepard2 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LIEPARD, 35, ITEM_NORMAL_GEM, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_FAKE_OUT, MOVE_COVET, MOVE_ENCORE, MOVE_NIGHT_SLASH)
     playmoncry(SPECIES_LIEPARD, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -281,6 +591,7 @@ script MythicIsland_Jungle_Encounter_Liepard3 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LIEPARD, 35, ITEM_NORMAL_GEM, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_FAKE_OUT, MOVE_COVET, MOVE_ENCORE, MOVE_NIGHT_SLASH)
     playmoncry(SPECIES_LIEPARD, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -309,6 +620,82 @@ script MythicIsland_Jungle_Encounter_Liepard3 {
         default:
             setflag(LIEPARD_FLAG_3)
             removeobject(LIEPARD_OBJECT_3)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Liepard4 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LIEPARD, 35, ITEM_NORMAL_GEM, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_FAKE_OUT, MOVE_COVET, MOVE_ENCORE, MOVE_NIGHT_SLASH)
+    playmoncry(SPECIES_LIEPARD, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(LIEPARD_FLAG_4)
+            removeobject(LIEPARD_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(LIEPARD_FLAG_4)
+            removeobject(LIEPARD_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(LIEPARD_FLAG_4)
+            removeobject(LIEPARD_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(LIEPARD_FLAG_4)
+            removeobject(LIEPARD_OBJECT_4)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Jungle_Encounter_Liepard5 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LIEPARD, 35, ITEM_NORMAL_GEM, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_FAKE_OUT, MOVE_COVET, MOVE_ENCORE, MOVE_NIGHT_SLASH)
+    playmoncry(SPECIES_LIEPARD, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(LIEPARD_FLAG_5)
+            removeobject(LIEPARD_OBJECT_5)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(LIEPARD_FLAG_5)
+            removeobject(LIEPARD_OBJECT_5)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(LIEPARD_FLAG_5)
+            removeobject(LIEPARD_OBJECT_5)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(LIEPARD_FLAG_5)
+            removeobject(LIEPARD_OBJECT_5)
             goto(Common_EventScript_RemoveStaticPokemon)
     }
     release

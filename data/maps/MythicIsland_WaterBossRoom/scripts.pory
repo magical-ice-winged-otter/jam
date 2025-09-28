@@ -8,6 +8,11 @@ mapscripts MythicIsland_WaterBossRoom_MapScripts {
     }
 }
 
+script MythicIsland_WaterBossRoom_SplashPlate {
+    finditem(ITEM_SPLASH_PLATE)
+    removeobject(2)
+}
+
 movement MythicIsland_WaterBossRoom_WalkingWake {
     walk_in_place_down
     delay_16 * 2

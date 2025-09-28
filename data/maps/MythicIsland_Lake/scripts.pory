@@ -84,6 +84,7 @@ script MythicIsland_Lake_Totem {
 script MythicIsland_Lake_Rapidash {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_RAPIDASH_GALAR, 40, ITEM_CUSTAP_BERRY, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_PSYCHO_CUT, MOVE_DAZZLING_GLEAM, MOVE_MEGAHORN, MOVE_MORNING_SUN)
     playmoncry(SPECIES_RAPIDASH_GALAR, CRY_MODE_ENCOUNTER)
     waitmoncry

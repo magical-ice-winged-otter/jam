@@ -14,97 +14,105 @@ MythicIsland_WaterBossRoom_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	return
 
 
-# 11 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-MythicIsland_WaterBossRoom_WalkingWake:
+MythicIsland_WaterBossRoom_SplashPlate::
 # 12 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	finditem ITEM_SPLASH_PLATE
+# 13 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	removeobject 2
+	return
+
+
+# 16 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+MythicIsland_WaterBossRoom_WalkingWake:
+# 17 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	walk_in_place_down
-# 13 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 18 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	delay_16
-# 13 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 18 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	delay_16
-# 14 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 19 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	walk_in_place_fast_down
-# 15 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 20 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	delay_16
-# 15 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 20 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	delay_16
 	step_end
 
 MythicIsland_WaterBossRoom_ApproachBossCenter::
-# 19 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 24 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	lock
-# 20 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 25 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	msgbox MythicIsland_WaterBossRoom_ApproachBossCenter_Text_0, MSGBOX_YESNO
-# 23 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 28 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_WaterBossRoom_ApproachBossCenter_1
-# 61 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 66 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	closemessage
-# 62 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 67 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-# 63 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 68 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 	return
 
 MythicIsland_WaterBossRoom_ApproachBossCenter_1:
-# 24 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	closemessage
-# 25 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-# 26 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
-# 27 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
-# 28 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
 # 29 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
+	closemessage
 # 30 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmoncry
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 # 31 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, Common_Movement_WalkDownFaster
+	waitmovement 0
 # 32 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
+# 33 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 # 34 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_SMART_WILD_AI_FLAG
+	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
 # 35 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_CATCHING
+	waitmoncry
 # 36 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
+	applymovement 1, Common_Movement_WalkDownFaster
 # 37 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
-# 38 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setwilddoubleflag
+	waitmovement 0
 # 39 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	setflag B_SMART_WILD_AI_FLAG
 # 40 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	dowildbattle
+	setflag B_FLAG_NO_CATCHING
 # 41 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
+	setflag B_FLAG_NO_RUNNING
 # 42 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
 # 43 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
+	setwilddoubleflag
 # 44 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 45 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	dowildbattle
 # 46 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	switch VAR_RESULT
+	clearflag B_SMART_WILD_AI_FLAG
 # 47 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossCenter_5
+	clearflag B_FLAG_NO_CATCHING
+# 48 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 49 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossCenter_6
-# 50 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossCenter_6
+	specialvar VAR_RESULT, GetBattleOutcome
 # 51 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	switch VAR_RESULT
+# 52 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossCenter_5
+# 54 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossCenter_6
+# 55 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossCenter_6
+# 56 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	case B_OUTCOME_CAUGHT, MythicIsland_WaterBossRoom_ApproachBossCenter_6
 MythicIsland_WaterBossRoom_ApproachBossCenter_6:
-# 53 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 58 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setflag FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED
-# 54 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 59 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	removeobject 1
-# 55 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 60 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setvar VAR_TEMP_1, 1
-# 56 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 61 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	return
 
@@ -113,84 +121,84 @@ MythicIsland_WaterBossRoom_ApproachBossCenter_5:
 
 
 MythicIsland_WaterBossRoom_ApproachBossLeft::
-# 70 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 75 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	lock
-# 71 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 76 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	msgbox MythicIsland_WaterBossRoom_ApproachBossCenter_Text_0, MSGBOX_YESNO
-# 74 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 79 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_WaterBossRoom_ApproachBossLeft_1
-# 114 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 119 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	closemessage
-# 115 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 120 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-# 116 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 121 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 	return
 
 MythicIsland_WaterBossRoom_ApproachBossLeft_1:
-# 75 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	closemessage
-# 76 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-# 77 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
-# 78 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-# 79 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
 # 80 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
+	closemessage
 # 81 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 # 82 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
+	waitmovement 0
 # 83 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmoncry
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 # 84 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, Common_Movement_WalkDownFaster
+	waitmovement 0
 # 85 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
+# 86 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 # 87 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_SMART_WILD_AI_FLAG
+	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
 # 88 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_CATCHING
+	waitmoncry
 # 89 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
+	applymovement 1, Common_Movement_WalkDownFaster
 # 90 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
-# 91 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setwilddoubleflag
+	waitmovement 0
 # 92 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	setflag B_SMART_WILD_AI_FLAG
 # 93 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	dowildbattle
+	setflag B_FLAG_NO_CATCHING
 # 94 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
+	setflag B_FLAG_NO_RUNNING
 # 95 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
 # 96 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
+	setwilddoubleflag
 # 97 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 98 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	dowildbattle
 # 99 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	switch VAR_RESULT
+	clearflag B_SMART_WILD_AI_FLAG
 # 100 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossLeft_5
+	clearflag B_FLAG_NO_CATCHING
+# 101 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 102 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossLeft_6
-# 103 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossLeft_6
+	specialvar VAR_RESULT, GetBattleOutcome
 # 104 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	switch VAR_RESULT
+# 105 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossLeft_5
+# 107 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossLeft_6
+# 108 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossLeft_6
+# 109 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	case B_OUTCOME_CAUGHT, MythicIsland_WaterBossRoom_ApproachBossLeft_6
 MythicIsland_WaterBossRoom_ApproachBossLeft_6:
-# 106 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 111 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setflag FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED
-# 107 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 112 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	removeobject 1
-# 108 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 113 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setvar VAR_TEMP_1, 1
-# 109 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 114 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	return
 
@@ -199,88 +207,88 @@ MythicIsland_WaterBossRoom_ApproachBossLeft_5:
 
 
 MythicIsland_WaterBossRoom_ApproachBossFarLeft::
-# 123 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 128 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	lock
-# 124 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 129 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	msgbox MythicIsland_WaterBossRoom_ApproachBossCenter_Text_0, MSGBOX_YESNO
-# 127 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 132 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_WaterBossRoom_ApproachBossFarLeft_1
-# 169 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 174 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	closemessage
-# 170 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 175 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-# 171 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 176 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 	return
 
 MythicIsland_WaterBossRoom_ApproachBossFarLeft_1:
-# 128 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	closemessage
-# 129 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-# 130 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
-# 131 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
-# 132 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
 # 133 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	closemessage
 # 134 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 # 135 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
-# 136 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
+# 136 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight
 # 137 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
+	waitmovement 0
 # 138 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmoncry
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 # 139 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, Common_Movement_WalkDownFaster
+	waitmovement 0
 # 140 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
+# 141 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 # 142 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_SMART_WILD_AI_FLAG
+	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
 # 143 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_CATCHING
+	waitmoncry
 # 144 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
+	applymovement 1, Common_Movement_WalkDownFaster
 # 145 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
-# 146 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setwilddoubleflag
+	waitmovement 0
 # 147 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	setflag B_SMART_WILD_AI_FLAG
 # 148 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	dowildbattle
+	setflag B_FLAG_NO_CATCHING
 # 149 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
+	setflag B_FLAG_NO_RUNNING
 # 150 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
 # 151 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
+	setwilddoubleflag
 # 152 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 153 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	dowildbattle
 # 154 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	switch VAR_RESULT
+	clearflag B_SMART_WILD_AI_FLAG
 # 155 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossFarLeft_5
+	clearflag B_FLAG_NO_CATCHING
+# 156 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 157 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossFarLeft_6
-# 158 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossFarLeft_6
+	specialvar VAR_RESULT, GetBattleOutcome
 # 159 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	switch VAR_RESULT
+# 160 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossFarLeft_5
+# 162 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossFarLeft_6
+# 163 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossFarLeft_6
+# 164 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	case B_OUTCOME_CAUGHT, MythicIsland_WaterBossRoom_ApproachBossFarLeft_6
 MythicIsland_WaterBossRoom_ApproachBossFarLeft_6:
-# 161 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 166 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setflag FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED
-# 162 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 167 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	removeobject 1
-# 163 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 168 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setvar VAR_TEMP_1, 1
-# 164 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 169 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	return
 
@@ -289,84 +297,84 @@ MythicIsland_WaterBossRoom_ApproachBossFarLeft_5:
 
 
 MythicIsland_WaterBossRoom_ApproachBossRight::
-# 178 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 183 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	lock
-# 179 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 184 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	msgbox MythicIsland_WaterBossRoom_ApproachBossCenter_Text_0, MSGBOX_YESNO
-# 182 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 187 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_WaterBossRoom_ApproachBossRight_1
-# 222 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 227 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	closemessage
-# 223 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 228 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-# 224 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 229 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 	return
 
 MythicIsland_WaterBossRoom_ApproachBossRight_1:
-# 183 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	closemessage
-# 184 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
-# 185 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
-# 186 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-# 187 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
 # 188 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
+	closemessage
 # 189 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 # 190 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
+	waitmovement 0
 # 191 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmoncry
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 # 192 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, Common_Movement_WalkDownFaster
+	waitmovement 0
 # 193 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
+# 194 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 # 195 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_SMART_WILD_AI_FLAG
+	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
 # 196 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_CATCHING
+	waitmoncry
 # 197 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
+	applymovement 1, Common_Movement_WalkDownFaster
 # 198 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
-# 199 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setwilddoubleflag
+	waitmovement 0
 # 200 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	setflag B_SMART_WILD_AI_FLAG
 # 201 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	dowildbattle
+	setflag B_FLAG_NO_CATCHING
 # 202 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
+	setflag B_FLAG_NO_RUNNING
 # 203 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LEFTOVERS, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
 # 204 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
+	setwilddoubleflag
 # 205 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 206 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	dowildbattle
 # 207 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	switch VAR_RESULT
+	clearflag B_SMART_WILD_AI_FLAG
 # 208 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossRight_5
+	clearflag B_FLAG_NO_CATCHING
+# 209 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 210 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossRight_6
-# 211 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossRight_6
+	specialvar VAR_RESULT, GetBattleOutcome
 # 212 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	switch VAR_RESULT
+# 213 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossRight_5
+# 215 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossRight_6
+# 216 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossRight_6
+# 217 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	case B_OUTCOME_CAUGHT, MythicIsland_WaterBossRoom_ApproachBossRight_6
 MythicIsland_WaterBossRoom_ApproachBossRight_6:
-# 214 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 219 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setflag FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED
-# 215 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 220 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	removeobject 1
-# 216 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 221 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setvar VAR_TEMP_1, 1
-# 217 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 222 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	return
 
@@ -375,88 +383,88 @@ MythicIsland_WaterBossRoom_ApproachBossRight_5:
 
 
 MythicIsland_WaterBossRoom_ApproachBossFarRight::
-# 231 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 236 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	lock
-# 232 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 237 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	msgbox MythicIsland_WaterBossRoom_ApproachBossCenter_Text_0, MSGBOX_YESNO
-# 235 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 240 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq MythicIsland_WaterBossRoom_ApproachBossFarRight_1
-# 277 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 282 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	closemessage
-# 278 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 283 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown
-# 279 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 284 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 	return
 
 MythicIsland_WaterBossRoom_ApproachBossFarRight_1:
-# 236 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	closemessage
-# 237 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
-# 238 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
-# 239 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
-# 240 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
 # 241 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	closemessage
 # 242 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 # 243 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
-# 244 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
+# 244 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft
 # 245 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
+	waitmovement 0
 # 246 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	waitmoncry
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 # 247 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	applymovement 1, Common_Movement_WalkDownFaster
+	waitmovement 0
 # 248 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	applymovement 1, MythicIsland_WaterBossRoom_WalkingWake
+# 249 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	waitmovement 0
 # 250 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_SMART_WILD_AI_FLAG
+	playmoncry SPECIES_WALKING_WAKE, CRY_MODE_NORMAL
 # 251 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_CATCHING
+	waitmoncry
 # 252 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag B_FLAG_NO_RUNNING
+	applymovement 1, Common_Movement_WalkDownFaster
 # 253 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LUM_BERRY, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
-# 254 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setwilddoubleflag
+	waitmovement 0
 # 255 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	setflag B_SMART_WILD_AI_FLAG
 # 256 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	dowildbattle
+	setflag B_FLAG_NO_CATCHING
 # 257 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
+	setflag B_FLAG_NO_RUNNING
 # 258 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_WALKING_WAKE, 50, ITEM_LUM_BERRY, NUM_NATURES, 0, MON_GENDERLESS, 252, 252, 252, 252, 252, 0, 31, 31, 31, 31, 31, 0, MOVE_HYDRO_STEAM, MOVE_FLAMETHROWER, MOVE_BREAKING_SWIPE, MOVE_DRAGON_BREATH
 # 259 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	clearflag B_FLAG_NO_RUNNING
+	setwilddoubleflag
 # 260 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	specialvar VAR_RESULT, GetBattleOutcome
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+# 261 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	dowildbattle
 # 262 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	switch VAR_RESULT
+	clearflag B_SMART_WILD_AI_FLAG
 # 263 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossFarRight_5
+	clearflag B_FLAG_NO_CATCHING
+# 264 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	clearflag B_FLAG_NO_RUNNING
 # 265 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossFarRight_6
-# 266 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
-	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossFarRight_6
+	specialvar VAR_RESULT, GetBattleOutcome
 # 267 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	switch VAR_RESULT
+# 268 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_LOST, MythicIsland_WaterBossRoom_ApproachBossFarRight_5
+# 270 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_RAN, MythicIsland_WaterBossRoom_ApproachBossFarRight_6
+# 271 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+	case B_OUTCOME_WON, MythicIsland_WaterBossRoom_ApproachBossFarRight_6
+# 272 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	case B_OUTCOME_CAUGHT, MythicIsland_WaterBossRoom_ApproachBossFarRight_6
 MythicIsland_WaterBossRoom_ApproachBossFarRight_6:
-# 269 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 274 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setflag FLAG_MYTHIC_ISLAND_WALKING_WAKE_DEFEATED
-# 270 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 275 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	removeobject 1
-# 271 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 276 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	setvar VAR_TEMP_1, 1
-# 272 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 277 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	return
 
@@ -465,6 +473,6 @@ MythicIsland_WaterBossRoom_ApproachBossFarRight_5:
 
 
 MythicIsland_WaterBossRoom_ApproachBossCenter_Text_0:
-# 21 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
+# 26 "data/maps/MythicIsland_WaterBossRoom/scripts.pory"
 	.string "> A great beast stands before you. Are\n"
 	.string "you fully prepared?$"

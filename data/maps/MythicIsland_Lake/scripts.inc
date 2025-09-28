@@ -141,39 +141,41 @@ MythicIsland_Lake_Rapidash::
 # 86 "data/maps/MythicIsland_Lake/scripts.pory"
 	setflag B_FLAG_NO_CATCHING
 # 87 "data/maps/MythicIsland_Lake/scripts.pory"
-	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_RAPIDASH_GALAR, 40, ITEM_CUSTAP_BERRY, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_PSYCHO_CUT, MOVE_DAZZLING_GLEAM, MOVE_MEGAHORN, MOVE_MORNING_SUN
+	setwildbattle SPECIES_NONE, 0
 # 88 "data/maps/MythicIsland_Lake/scripts.pory"
-	playmoncry SPECIES_RAPIDASH_GALAR, CRY_MODE_ENCOUNTER
+	createmon B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_RAPIDASH_GALAR, 40, ITEM_CUSTAP_BERRY, NUM_NATURES, 1, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_PSYCHO_CUT, MOVE_DAZZLING_GLEAM, MOVE_MEGAHORN, MOVE_MORNING_SUN
 # 89 "data/maps/MythicIsland_Lake/scripts.pory"
-	waitmoncry
+	playmoncry SPECIES_RAPIDASH_GALAR, CRY_MODE_ENCOUNTER
 # 90 "data/maps/MythicIsland_Lake/scripts.pory"
-	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	waitmoncry
 # 91 "data/maps/MythicIsland_Lake/scripts.pory"
-	dowildbattle
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
 # 92 "data/maps/MythicIsland_Lake/scripts.pory"
-	clearflag B_SMART_WILD_AI_FLAG
+	dowildbattle
 # 93 "data/maps/MythicIsland_Lake/scripts.pory"
-	clearflag B_FLAG_NO_CATCHING
+	clearflag B_SMART_WILD_AI_FLAG
 # 94 "data/maps/MythicIsland_Lake/scripts.pory"
+	clearflag B_FLAG_NO_CATCHING
+# 95 "data/maps/MythicIsland_Lake/scripts.pory"
 	specialvar VAR_RESULT, GetBattleOutcome
-# 96 "data/maps/MythicIsland_Lake/scripts.pory"
-	switch VAR_RESULT
 # 97 "data/maps/MythicIsland_Lake/scripts.pory"
+	switch VAR_RESULT
+# 98 "data/maps/MythicIsland_Lake/scripts.pory"
 	case B_OUTCOME_LOST, MythicIsland_Lake_Rapidash_3
-# 99 "data/maps/MythicIsland_Lake/scripts.pory"
+# 100 "data/maps/MythicIsland_Lake/scripts.pory"
 	case B_OUTCOME_RAN, MythicIsland_Lake_Rapidash_4
-# 101 "data/maps/MythicIsland_Lake/scripts.pory"
+# 102 "data/maps/MythicIsland_Lake/scripts.pory"
 	case B_OUTCOME_WON, MythicIsland_Lake_Rapidash_5
-# 105 "data/maps/MythicIsland_Lake/scripts.pory"
+# 106 "data/maps/MythicIsland_Lake/scripts.pory"
 	case B_OUTCOME_CAUGHT, MythicIsland_Lake_Rapidash_6
-# 110 "data/maps/MythicIsland_Lake/scripts.pory"
-	setflag FLAG_TEMP_2
 # 111 "data/maps/MythicIsland_Lake/scripts.pory"
-	removeobject 4
+	setflag FLAG_TEMP_2
 # 112 "data/maps/MythicIsland_Lake/scripts.pory"
+	removeobject 4
+# 113 "data/maps/MythicIsland_Lake/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 MythicIsland_Lake_Rapidash_1:
-# 114 "data/maps/MythicIsland_Lake/scripts.pory"
+# 115 "data/maps/MythicIsland_Lake/scripts.pory"
 	release
 	return
 
@@ -184,20 +186,20 @@ MythicIsland_Lake_Rapidash_4:
 	goto MythicIsland_Lake_Rapidash_1
 
 MythicIsland_Lake_Rapidash_5:
-# 102 "data/maps/MythicIsland_Lake/scripts.pory"
-	setflag FLAG_TEMP_2
 # 103 "data/maps/MythicIsland_Lake/scripts.pory"
-	removeobject 4
+	setflag FLAG_TEMP_2
 # 104 "data/maps/MythicIsland_Lake/scripts.pory"
+	removeobject 4
+# 105 "data/maps/MythicIsland_Lake/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Lake_Rapidash_1
 
 MythicIsland_Lake_Rapidash_6:
-# 106 "data/maps/MythicIsland_Lake/scripts.pory"
-	setflag FLAG_TEMP_2
 # 107 "data/maps/MythicIsland_Lake/scripts.pory"
-	removeobject 4
+	setflag FLAG_TEMP_2
 # 108 "data/maps/MythicIsland_Lake/scripts.pory"
+	removeobject 4
+# 109 "data/maps/MythicIsland_Lake/scripts.pory"
 	goto Common_EventScript_RemoveStaticPokemon
 	goto MythicIsland_Lake_Rapidash_1
 

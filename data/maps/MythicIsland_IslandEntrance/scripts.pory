@@ -103,11 +103,11 @@ script MythicIsland_IslandEntrance_EnterBoat {
 }
 
 script MythicIsland_IslandEntrance_EnterJungleLeft {
-    warp(MAP_MYTHIC_ISLAND_JUNGLE, 29,58)
+    warp(MAP_MYTHIC_ISLAND_JUNGLE, 0)
 }
 
 script MythicIsland_IslandEntrance_EnterJungleRight {
-    warp(MAP_MYTHIC_ISLAND_JUNGLE, 30,58)
+    warp(MAP_MYTHIC_ISLAND_JUNGLE, 1)
 }
 
 script MythicIsland_IslandEntrance_Chimecho {
@@ -155,6 +155,7 @@ script MythicIsland_IslandEntrance_Chimecho {
                 playse(SE_M_PSYBEAM)
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
                 waitmovement(0)
+                playse(SE_M_TELEPORT)
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
                 waitmovement(0)
                 warp(MAP_MYTHIC_ISLAND_SUNKEN_SHRINE, 13, 62)
@@ -163,6 +164,7 @@ script MythicIsland_IslandEntrance_Chimecho {
                 playse(SE_M_PSYBEAM)
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportSpin)
                 waitmovement(0)
+                playse(SE_M_TELEPORT)
                 applymovement(OBJ_EVENT_ID_PLAYER, teleportFly)
                 warp(MAP_MYTHIC_ISLAND_LAKE, 10, 32)
             default: 

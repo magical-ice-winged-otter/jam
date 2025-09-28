@@ -123,6 +123,7 @@ script MythicIsland_Jungle_Encounter_Swampert1 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -160,6 +161,7 @@ script MythicIsland_Jungle_Encounter_Swampert2 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -197,6 +199,7 @@ script MythicIsland_Jungle_Encounter_Swampert3 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -234,6 +237,7 @@ script MythicIsland_Jungle_Encounter_Swampert4 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -271,6 +275,7 @@ script MythicIsland_Jungle_Encounter_Swampert5 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -308,6 +313,7 @@ script MythicIsland_Jungle_Encounter_Swampert6 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -345,6 +351,7 @@ script MythicIsland_Jungle_Encounter_Swampert7 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -382,6 +389,7 @@ script MythicIsland_Jungle_Encounter_Swampert8 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -419,6 +427,7 @@ script MythicIsland_Jungle_Encounter_Swampert9 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -456,6 +465,7 @@ script MythicIsland_Jungle_Encounter_Swampert10 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -493,6 +503,7 @@ script MythicIsland_Jungle_Encounter_Swampert11 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -530,6 +541,7 @@ script MythicIsland_Jungle_Encounter_Swampert12 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry
@@ -567,6 +579,7 @@ script MythicIsland_Jungle_Encounter_Swampert13 {
     setflag(B_SMART_WILD_AI_FLAG)
     setflag(B_FLAG_NO_CATCHING)
     setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
     createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SWAMPERT, 45, ITEM_SHELL_BELL, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_MUD_BOMB, MOVE_MUDDY_WATER, MOVE_AVALANCHE, MOVE_ANCIENT_POWER)
     playmoncry(SPECIES_SWAMPERT, CRY_MODE_ENCOUNTER)
     waitmoncry

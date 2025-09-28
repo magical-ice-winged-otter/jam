@@ -1,0 +1,208 @@
+const KROKOROK_FLAG = FLAG_TEMP_1
+const KROKOROK_OBJECT = 7
+
+const TYRANTRUM_FLAG_1 = FLAG_TEMP_2
+const TYRANTRUM_OBJECT_1 = 8
+
+const SALANDIT_FLAG = FLAG_TEMP_3
+const SALANDIT_OBJECT = 9
+
+const LILEEP_FLAG = FLAG_TEMP_4
+const LILEEP_OBJECT = 13
+
+const ARMALDO_FLAG = FLAG_TEMP_5
+const ARMALDO_OBJECT = 14
+
+
+mapscripts MythicIsland_Desert_MapScripts {}
+
+
+// Pokemon
+script MythicIsland_Desert_Encounter_Krokorok {
+    lock 
+    faceplayer
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_KROKOROK, 30, ITEM_DARK_GEM, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_DIG, MOVE_CRUNCH, MOVE_SWAGGER, MOVE_STRENGTH)
+    playmoncry(SPECIES_KROKOROK, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            break
+        case B_OUTCOME_WON:
+            setflag(KROKOROK_FLAG)
+            removeobject(KROKOROK_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(KROKOROK_FLAG)
+            removeobject(KROKOROK_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(KROKOROK_FLAG)
+            removeobject(KROKOROK_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Desert_Encounter_Salandit {
+    lock 
+    faceplayer
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_SALANDIT, 30, ITEM_POISON_GEM, NUM_NATURES, 0, TRAINER_MON_FEMALE, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_VENOSHOCK, MOVE_TOXIC, MOVE_FLAME_BURST, MOVE_DRAGON_RAGE)
+    playmoncry(SPECIES_SALANDIT, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            break
+        case B_OUTCOME_WON:
+            setflag(SALANDIT_FLAG)
+            removeobject(SALANDIT_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(SALANDIT_FLAG)
+            removeobject(SALANDIT_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(SALANDIT_FLAG)
+            removeobject(SALANDIT_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+script MythicIsland_Desert_Encounter_Lileep {
+    lock 
+    faceplayer
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_LILEEP, 30, ITEM_JABOCA_BERRY, NUM_NATURES, 0, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_GIGA_DRAIN, MOVE_ANCIENT_POWER, MOVE_INGRAIN, MOVE_CONFUSE_RAY)
+    playmoncry(SPECIES_LILEEP, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            break
+        case B_OUTCOME_WON:
+            setflag(LILEEP_FLAG)
+            removeobject(LILEEP_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(LILEEP_FLAG)
+            removeobject(LILEEP_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(LILEEP_FLAG)
+            removeobject(LILEEP_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+
+
+
+
+script MythicIsland_Desert_Encounter_Tyrantrum1 {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_TYRANTRUM, 40, ITEM_QUICK_CLAW, NUM_NATURES, 2, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_DRAGON_CLAW, MOVE_CRUNCH, MOVE_ROCK_SLIDE, MOVE_DRAGON_DANCE)
+    playmoncry(SPECIES_TYRANTRUM, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(TYRANTRUM_FLAG_1)
+            removeobject(TYRANTRUM_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(TYRANTRUM_FLAG_1)
+            removeobject(TYRANTRUM_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(TYRANTRUM_FLAG_1)
+            removeobject(TYRANTRUM_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(TYRANTRUM_FLAG_1)
+            removeobject(TYRANTRUM_OBJECT_1)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
+
+
+script MythicIsland_Desert_Encounter_Armaldo {
+    setflag(B_SMART_WILD_AI_FLAG)
+    setflag(B_FLAG_NO_CATCHING)
+    setflag(B_FLAG_NO_RUNNING)
+    setwildbattle(SPECIES_NONE, 0)
+    createmon(B_SIDE_OPPONENT, B_FLANK_LEFT, SPECIES_ARMALDO, 40, ITEM_LIECHI_BERRY, NUM_NATURES, 2, MON_GENDERLESS, 0, 0, 0, 0, 0, 0, 0, 31, 31, 31, 31, 31, 31, MOVE_ROCK_BLAST, MOVE_X_SCISSOR, MOVE_AQUA_JET, MOVE_METAL_CLAW)
+    playmoncry(SPECIES_ARMALDO, CRY_MODE_ENCOUNTER)
+    waitmoncry
+    setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+    dowildbattle
+    clearflag(B_SMART_WILD_AI_FLAG)
+    clearflag(B_FLAG_NO_CATCHING)
+    clearflag(B_FLAG_NO_RUNNING)
+    specialvar(VAR_RESULT, GetBattleOutcome)
+        
+    switch(var(VAR_RESULT)) {
+        case B_OUTCOME_LOST:
+            break
+        case B_OUTCOME_RAN:
+            setflag(ARMALDO_FLAG)
+            removeobject(ARMALDO_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_WON:
+            setflag(ARMALDO_FLAG)
+            removeobject(ARMALDO_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        case B_OUTCOME_CAUGHT:
+            setflag(ARMALDO_FLAG)
+            removeobject(ARMALDO_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+        default:
+            setflag(ARMALDO_FLAG)
+            removeobject(ARMALDO_OBJECT)
+            goto(Common_EventScript_RemoveStaticPokemon)
+    }
+    release
+}
